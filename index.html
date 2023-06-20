@@ -42,6 +42,10 @@
 <input id="mid" type="checkbox" checked onclick="update_checkbox_class_all()">중거리
 <input id="long" type="checkbox" checked onclick="update_checkbox_class_all()">장거리
 </div>
+<div>
+<input id="op" type="checkbox" onclick="clear_selector()">Op
+<input id="pre_op" type="checkbox" onclick="clear_selector()">Pre-Op
+</div>
 </div>
 <div style="display:inline-block;">
 <div class="tab">
@@ -84,19 +88,25 @@ Presets
 <hr>
 <div>
 <a href="https://umamusumelabo.com/beginner/race-rotation-guide" target="_blank">umamusumelabo.com race-rotation-guide</a><br>
-<input type="button" value="마일 + 중거리 + 장거리 (잔디)" onclick="load_preset(umamusumelabo_presets[0])"><br>
-<input type="button" value="마일 + 중거리 + 장거리 (잔디 + 더트)" onclick="load_preset(umamusumelabo_presets[1])"> (e.g. 오구리 캡) <br>
-<input type="button" value="마일 + 중거리 (잔디)" onclick="load_preset(umamusumelabo_presets[2])"> (e.g. 보드카) <br>
-<input type="button" value="마일 + 중거리 (잔디 + 더트)" onclick="load_preset(umamusumelabo_presets[3])"> (e.g. 디지털) <br>
-<input type="button" value="마일 + 중거리 (잔디)" onclick="load_preset(umamusumelabo_presets[4])" disabled> (마일 적성 낮음 - OP 레이스를 나가서 작업중) <br>
-<input type="button" value="단거리 + 마일 (잔디)" onclick="load_preset(umamusumelabo_presets[5])"> (e.g. 박신) <br>
-<input type="button" value="단거리 + 마일 (잔디 + 더트)" onclick="load_preset(umamusumelabo_presets[6])"> (e.g. 타이키 셔틀) <br>
-<input type="button" value="단거리 + 마일 + 중거리 (잔디 + 더트)" onclick="load_preset(umamusumelabo_presets[7])"> (e.g. 스마트 팔콘 잔디개조) <br>
+<table class="preset_table">
+  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
+  <tr><td>마일 적성이 있는 중장거리 말딸</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[0])"><br></td></tr>
+  <tr><td>오구리캡</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[1])"><br></td></tr>
+  <tr><td>보드카</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[2])"><br></td></tr>
+  <tr><td>아그네스 디지털</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[3])"><br></td></tr>
+  <tr><td>마일 적성이 낮은 중장거리 말딸</td><td>O</td><td></td><td></td><td></td><td>O</td><td>O</td><td>29</td><td>230</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[4])"><br></td></tr>
+  <tr><td>사쿠라 박신 오</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[5])"><br></td></tr>
+  <tr><td>타이키 셔틀</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[6])"><br></td></tr>
+  <tr><td>스마트 팔콘 잔디개조</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[7])"><br></td></tr>
+</table>
 </div>
 <hr>
 <div>
-<input type="button" value="최소대회 270 마일 + 중거리 + 장거리 (잔디)" onclick="load_preset(grass_base_preset_text)"><br>
-<input type="button" value="최소대회 350 마일 + 중거리 + 장거리 (잔디 + 더트)" onclick="load_preset(grass_dirt_base_preset_text)">
+<table class="preset_table">
+  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
+  <tr><td>최소대회 PresetA</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>27</td><td>270</td><td><input type="button" value="import" onclick="load_preset(grass_base_preset_text)"><br></td></tr>
+  <tr><td>최소대회 PresetB</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>31</td><td>350</td><td><input type="button" value="import" onclick="load_preset(grass_dirt_base_preset_text)"><br></td></tr>
+</table>
 </div>
 </div>
 </div>
@@ -111,22 +121,22 @@ function update_checkbox_class(img, race_id) {
   img.title = race["grade"] + " / " + race["location"] + " / " + race["track"] + " / " + race["distance"] + "m(" + dist_to_text(race["distance"]) + ") / " + race["direction"];
 
   var mosaic = false;
-  var grass = $('input:checkbox[id="grass"]').is(":checked")
+  var grass = $('input:checkbox[id="grass"]').is(":checked");
   if (!grass && race["track"] == "잔디") mosaic = true;
 
-  var dirt = $('input:checkbox[id="dirt"]').is(":checked")
+  var dirt = $('input:checkbox[id="dirt"]').is(":checked");
   if (!dirt && race["track"] == "더트") mosaic = true;
 
-  var short = $('input:checkbox[id="short"]').is(":checked")
+  var short = $('input:checkbox[id="short"]').is(":checked");
   if (!short && dist_type_check("단거리", race["distance"])) mosaic = true;
 
-  var mile = $('input:checkbox[id="mile"]').is(":checked")
+  var mile = $('input:checkbox[id="mile"]').is(":checked");
   if (!mile && dist_type_check("마일", race["distance"])) mosaic = true;
 
-  var mid = $('input:checkbox[id="mid"]').is(":checked")
+  var mid = $('input:checkbox[id="mid"]').is(":checked");
   if (!mid && dist_type_check("중거리", race["distance"])) mosaic = true;
 
-  var long = $('input:checkbox[id="long"]').is(":checked")
+  var long = $('input:checkbox[id="long"]').is(":checked");
   if (!long && dist_type_check("장거리", race["distance"])) mosaic = true;
 
   if (mosaic) img.classList.add("mosaic");
@@ -251,8 +261,13 @@ function add_choice(race_id, thumb_link) {
 
 function update_selector() {
   clear_selector();
+  var op = $('input:checkbox[id="op"]').is(":checked");
+  var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
   if (selected_col_id in date_to_race_ids) {
     for (var race_id of date_to_race_ids[selected_col_id]) {
+      var grade = g_race[race_id]["grade"];
+      if (grade == 'OP' && !op) continue;
+      if (grade == 'Pre-OP' && !pre_op) continue;
       add_choice(race_id, g_race[race_id]["thumb_link"]);
     }
   }
@@ -463,13 +478,13 @@ function new_dirt_uma() {
   return race_win_count(["유니콘 스테이크스", "레오파드 스테이크스", "재팬 더트 더비"]);
 }
 
-function true_filter(race) {
-  return true;
+function op_filter(race) {
+  return ["G I", "G II", "G III", "OP"].includes(race["grade"]);
 }
 
-function location_filter_gen(locations) {
+function location_filter_gen_g123(locations) {
   function internal(race) {
-    return locations.includes(race["location"]);
+    return ["G I", "G II", "G III"].includes(race["grade"]) && locations.includes(race["location"]);
   }
   return internal;
 }
@@ -514,12 +529,12 @@ function update_titles() {
     "더트 스프린터": ["silver", jbc_sprint_uma, 2, "", 20],
     "더트의 신성": ["silver", new_dirt_uma, 3, "", 10],
 
-    "베테랑 우마무스메": ["bronze", count_uma(true_filter), 10, "", 10],
-    "홋카이도 마스터": ["bronze", count_uma(location_filter_gen(["삿포로", "하코다테"])), 3, "", 10],
-    "토호쿠 마스터": ["bronze", count_uma(location_filter_gen(["후쿠시마", "니이가타", "모리오카"])), 3, "", 10],
-    "칸토 마스터": ["bronze", count_uma(location_filter_gen(["도쿄", "나카야마", "오이", "카와사키", "후나바시"])), 3, "", 10],
-    "서일본 마스터": ["bronze", count_uma(location_filter_gen(["츄쿄", "한신", "교토",])), 3, "", 10],
-    "코쿠라 마스터": ["bronze", count_uma(location_filter_gen(["코쿠라"])), 3, "", 10],
+    "베테랑 우마무스메": ["bronze", count_uma(op_filter), 10, "", 10],
+    "홋카이도 마스터": ["bronze", count_uma(location_filter_gen_g123(["삿포로", "하코다테"])), 3, "", 10],
+    "토호쿠 마스터": ["bronze", count_uma(location_filter_gen_g123(["후쿠시마", "니이가타", "모리오카"])), 3, "", 10],
+    "칸토 마스터": ["bronze", count_uma(location_filter_gen_g123(["도쿄", "나카야마", "오이", "카와사키", "후나바시"])), 3, "", 10],
+    "서일본 마스터": ["bronze", count_uma(location_filter_gen_g123(["츄쿄", "한신", "교토",])), 3, "", 10],
+    "코쿠라 마스터": ["bronze", count_uma(location_filter_gen_g123(["코쿠라"])), 3, "", 10],
   };
 
   rewards = []
@@ -574,6 +589,13 @@ function update_titles() {
   var reward_list = $("#reward_list")[0];
   reward_list.innerText = "";
 
+  var race_count = 0;
+  for (var date_id of date_id_list) {
+    if (selected_race[date_id] != -1) {
+      race_count++;
+    }
+  }
+  rewards.push("(출전수 " + race_count + "전)");
   for (const reward of rewards) {
     var item = document.createElement("li");
     item.innerText = reward;
@@ -676,7 +698,7 @@ umamusumelabo_presets = [
   'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjEsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOjQ1LCJDXzNfQiI6NDgsIkNfNF9BIjo0LCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NywiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOjEwLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6MTI5LCJDXzlfQiI6LTEsIkNfMTBfQSI6NjEsIkNfMTBfQiI6MTQsIkNfMTFfQSI6LTEsIkNfMTFfQiI6MTksIkNfMTJfQSI6MjEsIkNfMTJfQiI6MjIsIlNfMV9BIjotMSwiU18xX0IiOi0xLCJTXzJfQSI6LTEsIlNfMl9CIjoyNCwiU18zX0EiOjE1MiwiU18zX0IiOjI2LCJTXzRfQSI6LTEsIlNfNF9CIjoyNywiU181X0EiOjI4LCJTXzVfQiI6LTEsIlNfNl9BIjoyOSwiU182X0IiOjMxLCJTXzdfQSI6LTEsIlNfN19CIjotMSwiU184X0EiOi0xLCJTXzhfQiI6LTEsIlNfOV9BIjoxNzUsIlNfOV9CIjotMSwiU18xMF9BIjo4NCwiU18xMF9CIjozMywiU18xMV9BIjotMSwiU18xMV9CIjozOSwiU18xMl9BIjo0MCwiU18xMl9CIjo0MX0=',
   'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOjQ1LCJDXzNfQiI6NDgsIkNfNF9BIjozLCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NiwiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6MTI5LCJDXzlfQiI6NTgsIkNfMTBfQSI6LTEsIkNfMTBfQiI6MTMsIkNfMTFfQSI6MTUsIkNfMTFfQiI6MTksIkNfMTJfQSI6LTEsIkNfMTJfQiI6LTEsIlNfMV9BIjotMSwiU18xX0IiOjY5LCJTXzJfQSI6NzAsIlNfMl9CIjo3MSwiU18zX0EiOi0xLCJTXzNfQiI6MjYsIlNfNF9BIjo3NSwiU180X0IiOi0xLCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MzAsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjgxLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM0LCJTXzExX0IiOjM5LCJTXzEyX0EiOi0xLCJTXzEyX0IiOi0xfQ==',
   'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOjQ1LCJDXzNfQiI6NDgsIkNfNF9BIjozLCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NiwiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6MTI5LCJDXzlfQiI6NTgsIkNfMTBfQSI6LTEsIkNfMTBfQiI6MTMsIkNfMTFfQSI6MTUsIkNfMTFfQiI6LTEsIkNfMTJfQSI6MjEsIkNfMTJfQiI6MjMsIlNfMV9BIjotMSwiU18xX0IiOi0xLCJTXzJfQSI6LTEsIlNfMl9CIjoyNCwiU18zX0EiOjE1MiwiU18zX0IiOjI2LCJTXzRfQSI6LTEsIlNfNF9CIjotMSwiU181X0EiOjI4LCJTXzVfQiI6LTEsIlNfNl9BIjoyOSwiU182X0IiOjMxLCJTXzdfQSI6LTEsIlNfN19CIjotMSwiU184X0EiOi0xLCJTXzhfQiI6LTEsIlNfOV9BIjoxNzUsIlNfOV9CIjo4MSwiU18xMF9BIjotMSwiU18xMF9CIjozMywiU18xMV9BIjozNCwiU18xMV9CIjotMSwiU18xMl9BIjo0MCwiU18xMl9CIjo0Mn0=',
-  '',
+  'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6LTEsIkpfOV9BIjotMSwiSl85X0IiOjE5NSwiSl8xMF9BIjoyMDAsIkpfMTBfQiI6LTEsIkpfMTFfQSI6LTEsIkpfMTFfQiI6OTgsIkpfMTJfQSI6LTEsIkpfMTJfQiI6MiwiQ18xX0EiOjEwMSwiQ18xX0IiOi0xLCJDXzJfQSI6LTEsIkNfMl9CIjoyMzMsIkNfM19BIjo0NSwiQ18zX0IiOi0xLCJDXzRfQSI6NCwiQ180X0IiOjUxLCJDXzVfQSI6LTEsIkNfNV9CIjo3LCJDXzZfQSI6LTEsIkNfNl9CIjo5LCJDXzdfQSI6LTEsIkNfN19CIjotMSwiQ184X0EiOi0xLCJDXzhfQiI6LTEsIkNfOV9BIjoxMjksIkNfOV9CIjo1OCwiQ18xMF9BIjotMSwiQ18xMF9CIjoxNCwiQ18xMV9BIjoxNSwiQ18xMV9CIjoyMCwiQ18xMl9BIjotMSwiQ18xMl9CIjoyMiwiU18xX0EiOi0xLCJTXzFfQiI6NjksIlNfMl9BIjo3MCwiU18yX0IiOi0xLCJTXzNfQSI6LTEsIlNfM19CIjoyNiwiU180X0EiOi0xLCJTXzRfQiI6MjcsIlNfNV9BIjoxNTcsIlNfNV9CIjotMSwiU182X0EiOi0xLCJTXzZfQiI6MzAsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjgxLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM0LCJTXzExX0IiOjM5LCJTXzEyX0EiOi0xLCJTXzEyX0IiOjQxfQ==',
   'eyJKXzdfQSI6LTEsIkpfN19CIjo5MCwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6LTEsIkNfMV9BIjo5OSwiQ18xX0IiOi0xLCJDXzJfQSI6MTAyLCJDXzJfQiI6LTEsIkNfM19BIjo0NywiQ18zX0IiOjQ4LCJDXzRfQSI6MywiQ180X0IiOi0xLCJDXzVfQSI6NSwiQ181X0IiOi0xLCJDXzZfQSI6OCwiQ182X0IiOjExMywiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6NTUsIkNfOV9CIjoxMSwiQ18xMF9BIjo2MSwiQ18xMF9CIjotMSwiQ18xMV9BIjotMSwiQ18xMV9CIjoxOSwiQ18xMl9BIjoxNDAsIkNfMTJfQiI6NjYsIlNfMV9BIjotMSwiU18xX0IiOi0xLCJTXzJfQSI6LTEsIlNfMl9CIjoxNDcsIlNfM19BIjoxNTIsIlNfM19CIjoyNSwiU180X0EiOi0xLCJTXzRfQiI6MTU2LCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MTYyLCJTXzdfQSI6LTEsIlNfN19CIjotMSwiU184X0EiOi0xLCJTXzhfQiI6LTEsIlNfOV9BIjo4MCwiU185X0IiOjMyLCJTXzEwX0EiOjg0LCJTXzEwX0IiOi0xLCJTXzExX0EiOi0xLCJTXzExX0IiOjM4LCJTXzEyX0EiOjE4NSwiU18xMl9CIjo4OX0=',
   'eyJKXzdfQSI6LTEsIkpfN19CIjo5MCwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6LTEsIkNfMV9BIjo5OSwiQ18xX0IiOi0xLCJDXzJfQSI6MTAyLCJDXzJfQiI6LTEsIkNfM19BIjo0NywiQ18zX0IiOjQ4LCJDXzRfQSI6MywiQ180X0IiOi0xLCJDXzVfQSI6NSwiQ181X0IiOi0xLCJDXzZfQSI6OCwiQ182X0IiOjExMywiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6LTEsIkNfOV9CIjoxMSwiQ18xMF9BIjo2MSwiQ18xMF9CIjotMSwiQ18xMV9BIjoxNywiQ18xMV9CIjoxOSwiQ18xMl9BIjoyMSwiQ18xMl9CIjotMSwiU18xX0EiOi0xLCJTXzFfQiI6LTEsIlNfMl9BIjotMSwiU18yX0IiOjI0LCJTXzNfQSI6MTUyLCJTXzNfQiI6MjUsIlNfNF9BIjotMSwiU180X0IiOjE1NiwiU181X0EiOjI4LCJTXzVfQiI6LTEsIlNfNl9BIjoyOSwiU182X0IiOjE2MiwiU183X0EiOi0xLCJTXzdfQiI6LTEsIlNfOF9BIjotMSwiU184X0IiOi0xLCJTXzlfQSI6LTEsIlNfOV9CIjozMiwiU18xMF9BIjo4NCwiU18xMF9CIjotMSwiU18xMV9BIjozNiwiU18xMV9CIjotMSwiU18xMl9BIjo0MCwiU18xMl9CIjo4OX0=',
   'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOjQ1LCJDXzNfQiI6NDgsIkNfNF9BIjozLCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NiwiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6NTUsIkNfOV9CIjoxMSwiQ18xMF9BIjotMSwiQ18xMF9CIjoxMywiQ18xMV9BIjoxNSwiQ18xMV9CIjoxOSwiQ18xMl9BIjotMSwiQ18xMl9CIjoyMywiU18xX0EiOi0xLCJTXzFfQiI6LTEsIlNfMl9BIjotMSwiU18yX0IiOjI0LCJTXzNfQSI6MTUyLCJTXzNfQiI6MjUsIlNfNF9BIjotMSwiU180X0IiOi0xLCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MzEsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjMyLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM0LCJTXzExX0IiOi0xLCJTXzEyX0EiOjQwLCJTXzEyX0IiOjQyfQ==',
@@ -2914,6 +2936,2274 @@ local_data = [
     "thumb_link": "./static/thum_race_rt/thum_race_rt_000_3070_00.png",
     "title": "\ud130\ud0a4\uc11d \uc2a4\ud14c\uc774\ud06c\uc2a4",
     "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 7\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4068_00.png",
+    "title": "\uce04\ucfc4 \uc8fc\ub2c8\uc5b4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4070_00.png",
+    "title": "\ub2ec\ub9ac\uc544\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ucf54\ucfe0\ub77c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4074_00.png",
+    "title": "\ud53c\ub2c9\uc2a4\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4075_00.png",
+    "title": "\ucf54\uc2a4\ubaa8\uc2a4\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1500",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4077_00.png",
+    "title": "\ud074\ub85c\ubc84\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4083_00.png",
+    "title": "\uc740\ubc29\uc6b8\uaf43\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4085_00.png",
+    "title": "\ub4e4\uad6d\ud654 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4501_00.png",
+    "title": "\uc6b0\uc120\uad6d\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4087_00.png",
+    "title": "\ub3c4\ub77c\uc9c0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4088_00.png",
+    "title": "\ubd80\uc6a9\uaf43 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4089_00.png",
+    "title": "\ud64d\ucd08 \uc2a4\ucf00\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4502_00.png",
+    "title": "\uc0ac\ud504\ub780\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4093_00.png",
+    "title": "\ub2e8\ud48d \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4503_00.png",
+    "title": "\uc6a9\ub2f4\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4504_00.png",
+    "title": "\uc790\uad6d\ud654\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4505_00.png",
+    "title": "\ud50c\ub77c\ud0c0\ub108\uc2a4\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1700",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4096_00.png",
+    "title": "\uc544\uc774\ube44 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1700",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4099_00.png",
+    "title": "\uc0ac\ucca0\uc465 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4506_00.png",
+    "title": "\ud328\ub7ad\uc774\uaf43\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4103_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8 \uc8fc\ub2c8\uc5b4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4507_00.png",
+    "title": "\ubc31\uc77c\ucd08 \ud2b9\ubcc4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4508_00.png",
+    "title": "\uae08\ubaa9\uc11c \ud2b9\ubcc4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4509_00.png",
+    "title": "\uc0ac\ub791\ucd08\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4510_00.png",
+    "title": "\ud669\uad6d\ud654\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4511_00.png",
+    "title": "\uac10\ud0d5\ub098\ubb34\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4512_00.png",
+    "title": "\uc801\uc1a1\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4513_00.png",
+    "title": "\ucd94\uba85\uad6d\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4514_00.png",
+    "title": "\uce74\ud2c0\ub808\uc57c\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4515_00.png",
+    "title": "\ubca0\uace0\ub2c8\uc544\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4516_00.png",
+    "title": "\ubc31\uad6d\ud654\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4517_00.png",
+    "title": "\ubaa8\ub780\ucc44\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4518_00.png",
+    "title": "\uae08\uc1a1\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4519_00.png",
+    "title": "\ubc31\ub7c9\uae08\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4520_00.png",
+    "title": "\ud751\uc1a1\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4521_00.png",
+    "title": "\uc5d0\ub9ac\uce74\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4522_00.png",
+    "title": "\ud138\uba38\uc704\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4523_00.png",
+    "title": "\ud638\ub791\uac00\uc2dc\ub098\ubb34\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4524_00.png",
+    "title": "\uc0b0\ub2e4\ud654\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4525_00.png",
+    "title": "\uaca8\uc6b8\ub3d9\ubc31\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "1600",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4114_00.png",
+    "title": "\ud06c\ub9ac\uc2a4\ub9c8\uc2a4 \ub85c\uc988 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc8fc\ub2c8\uc5b4\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1000",
+    "grade": "Pre-OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4526_00.png",
+    "title": "\uc8fd\uc808\ucd08\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4002_00.png",
+    "title": "\uc8fc\ub2c8\uc5b4\ucef5",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4007_00.png",
+    "title": "\ud64d\ub9e4\ud654 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 1\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4009_00.png",
+    "title": "\uc640\uce74\uace0\ub9c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 1\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4012_00.png",
+    "title": "\ud06c\ub85c\ucee4\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 2\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4014_00.png",
+    "title": "\uc5d8\ud540 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 2\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1900",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4018_00.png",
+    "title": "\ud788\uc544\uc2e0\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 2\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2200",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4020_00.png",
+    "title": "\uc81c\ube44\uaf43 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 2\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4032_00.png",
+    "title": "\ub9c8\uac00\ub81b \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4024_00.png",
+    "title": "\uc544\ub124\ubaa8\ub124 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1800",
+    "grade": "OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4025_00.png",
+    "title": "\uc2b9\ub8e1 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 3\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4027_00.png",
+    "title": "\uc0c8\uc78e \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1800",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4033_00.png",
+    "title": "\ubcf5\ub8e1 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4035_00.png",
+    "title": "\ubb3c\ub9dd\ucd08\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 4\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4039_00.png",
+    "title": "\ubc00\uac10 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 4\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "1800",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4042_00.png",
+    "title": "\ub2e8\uc624 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 4\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4043_00.png",
+    "title": "\uc2a4\uc704\ud2b8\ud53c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4045_00.png",
+    "title": "\ud504\ub9b0\uc2dc\ud384 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "1800",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4052_00.png",
+    "title": "\uccad\ub8e1 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "1900",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4054_00.png",
+    "title": "\ubd09\ucd94 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2000",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4056_00.png",
+    "title": "\ubc31\ubc31\ud569 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4060_00.png",
+    "title": "\ud150\ud3ec\uc0b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2100",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4119_00.png",
+    "title": "\uc2ac\ub808\uc774\ud504\ub2c8\ub974 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4059_00.png",
+    "title": "\uc544\ud560 \ud14c\ucf00 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4061_00.png",
+    "title": "\uc694\ub098\uace0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4062_00.png",
+    "title": "\uc624\ub204\ub9c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4063_00.png",
+    "title": "\ud30c\ub77c\ub2e4\uc774\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4120_00.png",
+    "title": "\uc0b0\ub178\ubbf8\uc57c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4064_00.png",
+    "title": "\ud1a0\ubaa8\uc5d0\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4065_00.png",
+    "title": "\ub9c8\ub9b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4066_00.png",
+    "title": "\ub098\uace0\uc57c \ucca0\ub3c4\ubc30",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 7\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4069_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8TV \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2600",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4071_00.png",
+    "title": "\uc0bf\ud3ec\ub85c \ub2db\ucf00\uc774 \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4072_00.png",
+    "title": "UHB\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ucf54\ucfe0\ub77c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4073_00.png",
+    "title": "\uc544\uc18c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uce74\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4121_00.png",
+    "title": "\uac04\uc5d0\uce20 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4076_00.png",
+    "title": "NST\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4079_00.png",
+    "title": "BSN\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ucf54\ucfe0\ub77c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4080_00.png",
+    "title": "\ucf54\ucfe0\ub77c \ub2db\ucf00\uc774 \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4081_00.png",
+    "title": "\ub530\uc624\uae30 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2600",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4082_00.png",
+    "title": "\ub450\ub8e8\ubbf8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4084_00.png",
+    "title": "\uc5d0\ub2c8\ud504 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4086_00.png",
+    "title": "\ub77c\ub514\uc624 \uc77c\ubcf8\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4090_00.png",
+    "title": "\ud3ec\ud2b8\uc544\uc77c\ub79c\ub4dc \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4122_00.png",
+    "title": "\ub098\uac00\uce20\ud0a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4091_00.png",
+    "title": "\uc624\ud314 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4092_00.png",
+    "title": "\uadf8\ub9b0 \ucc44\ub110\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4094_00.png",
+    "title": "\uc625\ud1a0\ubc84 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4095_00.png",
+    "title": "\uc2e0\uc5d0\uce20 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4123_00.png",
+    "title": "\uc6b0\uc988\ub9c8\uc0ac \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4097_00.png",
+    "title": "\ubb34\ub85c\ub9c8\uce58 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "2100",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4098_00.png",
+    "title": "\ube0c\ub77c\uc9c8\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4100_00.png",
+    "title": "\uce74\uc2dc\uc624\ud398\uc774\uc544 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc9c1\uc120",
+    "distance": "1000",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4101_00.png",
+    "title": "\ub8e8\ubbf8\uc5d0\ub974 \uc624\ud140 \ub300\uc2dc",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4102_00.png",
+    "title": "ORO\ucef5",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4104_00.png",
+    "title": "\uc548\ub4dc\ub85c\uba54\ub2e4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4105_00.png",
+    "title": "\ub3d9\uc9d3\ub2ec \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4106_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8 \ubbfc\uc6b0\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4107_00.png",
+    "title": "\uce90\ud53c\ud0c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4108_00.png",
+    "title": "\uc624\ud140 \ub9ac\ud504 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4109_00.png",
+    "title": "\ub77c\ud53c\uc2a4 \ub77c\uc904\ub9ac \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4110_00.png",
+    "title": "\uc123\ub2ec \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4111_00.png",
+    "title": "\ub9ac\uac94 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4112_00.png",
+    "title": "\ud0c4\uc790\ub098\uc774\ud2b8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4113_00.png",
+    "title": "\ub514\uc148\ubc84 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4115_00.png",
+    "title": "\uac24\ub7ed\uc2dc \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\ud074\ub798\uc2dd\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4116_00.png",
+    "title": "\ubca0\ud154\uac8c\uc6b0\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "3000",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4001_00.png",
+    "title": "\ub9cc\uc5fd \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4003_00.png",
+    "title": "\uc694\ub3c4 \ub2e8\uac70\ub9ac \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4004_00.png",
+    "title": "\ud3f4\ub8e9\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4005_00.png",
+    "title": "\uc7ac\ub274\uc5b4\ub9ac \uc2a4\ucf00\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\uba00",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4006_00.png",
+    "title": "\ub274 \uc774\uc5b4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\uba00",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4010_00.png",
+    "title": "\uce74\ubc99\ud074 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4008_00.png",
+    "title": "\ud50c\ub808\uc774\uc544\ub370\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 1\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4011_00.png",
+    "title": "\uc2dc\ub77c\ud6c4\uc9c0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 2\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4013_00.png",
+    "title": "\uc57c\ub9c8\ud1a0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 2\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4015_00.png",
+    "title": "\ub77c\ucfe0\uc694 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 2\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1900",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4016_00.png",
+    "title": "\uc54c\ub370\ubc14\ub780 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 2\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4017_00.png",
+    "title": "\ubc38\ub7f0\ud0c0\uc778 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 2\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4019_00.png",
+    "title": "\uc18c\ubd80 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4021_00.png",
+    "title": "\uc624\uc0ac\uce74\uc131 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4022_00.png",
+    "title": "\ud3f4\ub77c\ub9ac\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4023_00.png",
+    "title": "\ub2c8\uac00\uc640 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4026_00.png",
+    "title": "\ub3d9\ud48d \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4028_00.png",
+    "title": "\uce58\ubc14 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 3\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4030_00.png",
+    "title": "\ub86f\ucf54 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4031_00.png",
+    "title": "\ucf54\ub784 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4036_00.png",
+    "title": "\ucf00\uc774\uc694 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4037_00.png",
+    "title": "\ucd98\ub8b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4038_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8 \ubbfc\ubcf4\ubc30",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4118_00.png",
+    "title": "\uc544\uc988\ub9c8\ucf54\ud6c4\uc9c0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4040_00.png",
+    "title": "\uc624\uc544\uc2dc\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 4\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4041_00.png",
+    "title": "\ud150\ub178\uc0b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4044_00.png",
+    "title": "\ud0c0\ub2c8\uac00\uc640\ub2e4\ucf00 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2400",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4046_00.png",
+    "title": "\uba54\ud2b8\ub85c\ud3f4\ub9ac\ud0c4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4047_00.png",
+    "title": "\ucfe0\ub77c\ub9c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2100",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4048_00.png",
+    "title": "\ube0c\ub9b4\ub9ac\uc5b8\ud2b8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4049_00.png",
+    "title": "\ubbf8\uc57c\ucf54 \uc624\uc9c0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4051_00.png",
+    "title": "\ub9bf\ud1a0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4053_00.png",
+    "title": "\uba54\uc774 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc9c1\uc120",
+    "distance": "1000",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4055_00.png",
+    "title": "\uc704\ud0c0\ucc9c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4057_00.png",
+    "title": "\ub290\ud2f0\ub098\ubb34 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 5\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4058_00.png",
+    "title": "\uc544\uc988\uce58\uc131 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4060_00.png",
+    "title": "\ud150\ud3ec\uc0b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2100",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4119_00.png",
+    "title": "\uc2ac\ub808\uc774\ud504\ub2c8\ub974 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4059_00.png",
+    "title": "\uc544\ud560 \ud14c\ucf00 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4061_00.png",
+    "title": "\uc694\ub098\uace0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4062_00.png",
+    "title": "\uc624\ub204\ub9c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4063_00.png",
+    "title": "\ud30c\ub77c\ub2e4\uc774\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 6\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4120_00.png",
+    "title": "\uc0b0\ub178\ubbf8\uc57c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4064_00.png",
+    "title": "\ud1a0\ubaa8\uc5d0\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud558\ucf54\ub2e4\ud14c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4065_00.png",
+    "title": "\ub9c8\ub9b0 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 7\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uce04\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4066_00.png",
+    "title": "\ub098\uace0\uc57c \ucca0\ub3c4\ubc30",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 7\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4069_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8TV \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2600",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4071_00.png",
+    "title": "\uc0bf\ud3ec\ub85c \ub2db\ucf00\uc774 \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4072_00.png",
+    "title": "UHB\uc0c1",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ucf54\ucfe0\ub77c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4073_00.png",
+    "title": "\uc544\uc18c \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uce74\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4121_00.png",
+    "title": "\uac04\uc5d0\uce20 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4076_00.png",
+    "title": "NST\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4079_00.png",
+    "title": "BSN\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\ucf54\ucfe0\ub77c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4080_00.png",
+    "title": "\ucf54\ucfe0\ub77c \ub2db\ucf00\uc774 \uc624\ud508",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 8\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4081_00.png",
+    "title": "\ub530\uc624\uae30 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "2600",
+    "fan_condition": "350",
+    "fan_gain": "2400",
+    "grade": "OP",
+    "location": "\uc0bf\ud3ec\ub85c",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4082_00.png",
+    "title": "\ub450\ub8e8\ubbf8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4084_00.png",
+    "title": "\uc5d0\ub2c8\ud504 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 9\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4086_00.png",
+    "title": "\ub77c\ub514\uc624 \uc77c\ubcf8\uc0c1",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4090_00.png",
+    "title": "\ud3ec\ud2b8\uc544\uc77c\ub79c\ub4dc \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 9\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4122_00.png",
+    "title": "\ub098\uac00\uce20\ud0a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4091_00.png",
+    "title": "\uc624\ud314 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4092_00.png",
+    "title": "\uadf8\ub9b0 \ucc44\ub110\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4094_00.png",
+    "title": "\uc625\ud1a0\ubc84 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c, \ub0b4\uce21",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4095_00.png",
+    "title": "\uc2e0\uc5d0\uce20 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4123_00.png",
+    "title": "\uc6b0\uc988\ub9c8\uc0ac \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4097_00.png",
+    "title": "\ubb34\ub85c\ub9c8\uce58 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "2100",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4098_00.png",
+    "title": "\ube0c\ub77c\uc9c8\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4100_00.png",
+    "title": "\uce74\uc2dc\uc624\ud398\uc774\uc544 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 10\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc9c1\uc120",
+    "distance": "1000",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub2c8\uc774\uac00\ud0c0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4101_00.png",
+    "title": "\ub8e8\ubbf8\uc5d0\ub974 \uc624\ud140 \ub300\uc2dc",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \uc804\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4102_00.png",
+    "title": "ORO\ucef5",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "2000",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4104_00.png",
+    "title": "\uc548\ub4dc\ub85c\uba54\ub2e4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4105_00.png",
+    "title": "\ub3d9\uc9d3\ub2ec \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1700",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud6c4\ucfe0\uc2dc\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4106_00.png",
+    "title": "\ud6c4\ucfe0\uc2dc\ub9c8 \ubbfc\uc6b0\ucef5",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc88c",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub3c4\ucfc4",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4107_00.png",
+    "title": "\uce90\ud53c\ud0c8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 11\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\uad50\ud1a0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4108_00.png",
+    "title": "\uc624\ud140 \ub9ac\ud504 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4109_00.png",
+    "title": "\ub77c\ud53c\uc2a4 \ub77c\uc904\ub9ac \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4110_00.png",
+    "title": "\uc123\ub2ec \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \uc678\uce21",
+    "distance": "1600",
+    "fan_condition": "350",
+    "fan_gain": "2500",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4111_00.png",
+    "title": "\ub9ac\uac94 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1200",
+    "fan_condition": "350",
+    "fan_gain": "2300",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4112_00.png",
+    "title": "\ud0c4\uc790\ub098\uc774\ud2b8 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \uc804\ubc18",
+    "direction": "\uc6b0, \ub0b4\uce21",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2600",
+    "grade": "OP",
+    "location": "\ub098\uce74\uc57c\ub9c8",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4113_00.png",
+    "title": "\ub514\uc148\ubc84 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\uc794\ub514"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1400",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4115_00.png",
+    "title": "\uac24\ub7ed\uc2dc \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
+  },
+  {
+    "date": "\uc2dc\ub2c8\uc5b4\uae09 12\uc6d4 \ud6c4\ubc18",
+    "direction": "\uc6b0",
+    "distance": "1800",
+    "fan_condition": "350",
+    "fan_gain": "2200",
+    "grade": "OP",
+    "location": "\ud55c\uc2e0",
+    "thumb_link": "./static/thum_race_rt/thum_race_rt_000_4116_00.png",
+    "title": "\ubca0\ud154\uac8c\uc6b0\uc2a4 \uc2a4\ud14c\uc774\ud06c\uc2a4",
+    "track": "\ub354\ud2b8"
   }
 ];
 </script>

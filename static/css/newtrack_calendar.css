@@ -83,3 +83,11 @@ ul,li {list-style:none;}
 .tabcontent div{
   display: inline-block;
 }
+
+.preset_table td,.preset_table th{
+  border: 1px solid #444444;
+}
+
+.preset_table td+td{
+  width: 70px;
+}
