@@ -1,0 +1,85 @@
+.race_img {
+  height: 66px;
+  display: block;
+  border: 1px solid;
+}
+
+#selector .race_img {
+  display: inline-block;
+}
+
+table {
+  display: block;
+}
+
+#selector {
+  position: fixed;
+}
+
+.title_div,.race_date {
+  display: inline-block;
+  font-size: 12px;
+}
+
+td,th {
+  text-align: center;
+}
+
+.true {
+  color: blue;
+  font-weight: bold;
+}
+
+.false {
+  color: gray;
+  text-decoration: line-through;
+}
+
+
+.gold,.s30,.done {
+  background-color: gold;
+}
+
+.silver,.s20,.started {
+  background-color: silver;
+}
+
+.bronze,.s10 {
+  background-color: brown;
+}
+
+.s0 {
+  background-color: pink;
+}
+
+.mosaic {
+  filter: blur(1px);
+  opacity: 0.7;
+}
+
+        html,body {width:100%;  }
+body,div,ul,li{margin:0; padding:0;}
+ul,li {list-style:none;}
+
+/*tab css*/
+.tab{float:left;}
+.tabnav{font-size:0; width:600px; border:1px solid #ddd;}
+.tabnav li{display: inline-block;  height:46px; text-align:center; border-right:1px solid #ddd;}
+.tabnav li a:before{content:""; position:absolute; left:0; top:0px; width:100%; height:3px; }
+.tabnav li a.active:before{background:#7ea21e;}
+.tabnav li a.active{border-bottom:1px solid #fff;}
+.tabnav li a{ position:relative; display:block; background: #f8f8f8; color: #000; padding:0 30px; line-height:46px; text-decoration:none; font-size:14px;}
+.tabnav li a:hover,
+.tabnav li a.active{background:#fff; color:#7ea21e; }
+
+#C_7_A,#C_7_B,#C_8_A,#C_8_B,#S_7_A,#S_7_B,#S_8_A,#S_8_B {
+  background-color: skyblue;
+}
+
+#J_9_B,#J_12_B,#C_3_B,#C_6_B,#C_9_B,#C_12_B,#S_3_B,#S_6_B,#S_9_B,#S_12_B {
+  background-color: yellow;
+}
+
+.tabcontent div{
+  display: inline-block;
+}
