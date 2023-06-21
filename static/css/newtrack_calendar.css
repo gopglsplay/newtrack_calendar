@@ -1,11 +1,13 @@
 .race_img {
   height: 66px;
+  width: 130px;
   display: block;
   border: 1px solid;
 }
 
-#selector .race_img {
+#selector > div {
   display: inline-block;
+  position: relative;
 }
 
 table {
@@ -14,6 +16,7 @@ table {
 
 #selector {
   position: fixed;
+  font-size: 0;
 }
 
 .title_div,.race_date {
@@ -32,7 +35,6 @@ td,th {
 
 .false {
   color: gray;
-  text-decoration: line-through;
 }
 
 
@@ -57,9 +59,9 @@ td,th {
   opacity: 0.7;
 }
 
-        html,body {width:100%;  }
+html,body {width:100%;  }
 body,div,ul,li{margin:0; padding:0;}
-ul,li {list-style:none;}
+.tab ul,.tab li {list-style:none;}
 
 /*tab css*/
 .tab{float:left;}
@@ -84,10 +86,62 @@ ul,li {list-style:none;}
   display: inline-block;
 }
 
+.tabcontent td{
+  position: relative;
+}
+
+.minus {
+  color: red;
+}
+.plus {
+  color: green;
+}
+
+.minus, .plus {
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  height: 22px;
+  width: 22px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .preset_table td,.preset_table th{
   border: 1px solid #444444;
 }
 
 .preset_table td+td{
   width: 70px;
+}
+
+/* 모든 체크박스를 숨김 처리 한다. */
+#title_list input[type="checkbox"] {
+    display:none;
+}
+
+#title_list label:has(> input[type="checkbox"]) ~ ul {
+    display:none;
+}
+#title_list label:has(> input[type="checkbox"]:checked) ~ ul {
+    display:list-item;
+}
+
+
+#title_list li {
+  list-style: none;
+}
+
+#title_list ul.nested {list-style:none; padding-left:18px;}
+
+#title_list label { margin-bottom: 0;}
+
+#title_list label::before {
+  content: "+";
+  color: black;
+  display: inline-block;
+  margin-right: 3px;
 }
