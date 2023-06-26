@@ -8,6 +8,9 @@ class Condition {
   repr(rotation) {
     return "empty";
   }
+  get title() {
+    return null
+  }
 }
 
 class TitleProperties {
@@ -69,6 +72,12 @@ class RaceCondition extends Condition {
   repr(rotation) {
     return this.race_name;
   }
+  get title() {
+    if (!(this.race_name in window.race_manager.race_name_to_date_ids)) return null;
+    return window.race_manager.race_name_to_date_ids[this.race_name].map(
+      (date_id) => date_id_to_text(date_id)
+    ).join(' / ');
+  }
 }
 
 class ClassicRaceCondition extends RaceCondition {
@@ -78,6 +87,14 @@ class ClassicRaceCondition extends RaceCondition {
   repr(rotation) {
     return this.race_name + " (클래식)";
   }
+  get title() {
+    if (!(this.race_name in window.race_manager.race_name_to_date_ids)) return null;
+    return window.race_manager.race_name_to_date_ids[this.race_name].filter(
+      (date_id) => (date_id[0] == 'C')
+    ).map(
+      (date_id) => date_id_to_text(date_id)
+    ).join(' / ');
+  }
 }
 
 class SeniorRaceCondition extends RaceCondition {
@@ -86,6 +103,14 @@ class SeniorRaceCondition extends RaceCondition {
   }
   repr(rotation) {
     return this.race_name + " (시니어)";
+  }
+  get title() {
+    if (!(this.race_name in window.race_manager.race_name_to_date_ids)) return null;
+    return window.race_manager.race_name_to_date_ids[this.race_name].filter(
+      (date_id) => (date_id[0] == 'S')
+    ).map(
+      (date_id) => date_id_to_text(date_id)
+    ).join(' / ');
   }
 }
 

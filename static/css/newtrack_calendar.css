@@ -160,6 +160,15 @@ body,div,ul,li{margin:0; padding:0;}
   color: black;
   display: inline-block;
   margin-right: 3px;
+  font-family: monospace, monospace;
+}
+
+#title_list label:has(> input[type="checkbox"]:checked)::before {
+  content: "-";
+  color: black;
+  display: inline-block;
+  margin-right: 3px;
+  font-family: monospace, monospace;
 }
 
 .arrow {

@@ -37,6 +37,29 @@ function date_text_to_id(text) {
   return create_date_id(jcs, month, ab);
 }
 
+
+function getJcsText(jcs) {
+  if (jcs == 'J') return "주니어배";
+  if (jcs == 'C') return "클래식배";
+  if (jcs == 'S') return "시니어배";
+  return "?";
+}
+
+function getMonthText(month) {
+  return month + "월";
+}
+
+function getAbText(ab) {
+  if (ab == "A") return "전반";
+  if (ab == "B") return "후반";
+  return "?반";
+}
+
+function date_id_to_text(date_id) {
+  var date_array = date_id.split("_");
+  return getJcsText(date_array[0]) + " " + getMonthText(date_array[1]) + " " + getAbText(date_array[2]);
+}
+
 class Race {
   constructor(id, race_json) {
     this.id = id;
@@ -69,8 +92,13 @@ class RaceManager {
     }
 
     this.date_id_to_race_ids = Object.fromEntries(this.date_id_list.map(date_id => [date_id, []]))
+    this.race_name_to_date_ids = {}
     for (const [id, race] of this.race_list.entries()) {
       this.date_id_to_race_ids[race.date_id].push(id);
+      if (!(race.name in this.race_name_to_date_ids)) {
+        this.race_name_to_date_ids[race.name] = [];
+      }
+      this.race_name_to_date_ids[race.name].push(race.date_id);
     }
   }
 

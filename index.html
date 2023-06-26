@@ -382,28 +382,6 @@ function render_rotation_presets() {
   }
 }
 
-function getJcsText(jcs) {
-  if (jcs == 'J') return "주니어배";
-  if (jcs == 'C') return "클래식배";
-  if (jcs == 'S') return "시니어배";
-  return "?";
-}
-
-function getMonthText(month) {
-  return month + "월";
-}
-
-function getAbText(ab) {
-  if (ab == "A") return "전반";
-  if (ab == "B") return "후반";
-  return "?반";
-}
-
-function date_id_to_text(date_id) {
-  var date_array = date_id.split("_");
-  return getJcsText(date_array[0]) + " " + getMonthText(date_array[1]) + " " + getAbText(date_array[2]);
-}
-
 DEFAULT_THUMB_LINK = './static/thum_race_rt/empty_race.png'
 function get_thumb_link(race) {
   if (race == null) return DEFAULT_THUMB_LINK;
@@ -570,6 +548,9 @@ function update_condition(condition) {
   update_childs(condition.childs);
   condition.text_elem.innerText = condition.repr(window.rotation);
   condition.text_elem.className = condition.check(window.rotation) ? "true" : "false";
+  if (condition.title != null) {
+    condition.text_elem.title = condition.title;
+  }
 }
 
 function update_childs(childs) {
