@@ -366,7 +366,7 @@ function date_id_to_text(date_id) {
   return getJcsText(date_array[0]) + " " + getMonthText(date_array[1]) + " " + getAbText(date_array[2]);
 }
 
-DEFAULT_THUMB_LINK = './static/thum_race_rt/thum_race_rt_000_9006_00.png'
+DEFAULT_THUMB_LINK = './static/thum_race_rt/empty_race.png'
 function get_thumb_link(race) {
   if (race == null) return DEFAULT_THUMB_LINK;
   return race.thumb_link;
