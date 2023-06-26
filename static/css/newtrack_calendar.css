@@ -197,3 +197,11 @@ body,div,ul,li{margin:0; padding:0;}
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+
+#race_bonus {
+  width: 50px;
+}
+
+#computed_stat {
+  font-size: 12px;
+}

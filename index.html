@@ -58,6 +58,8 @@
     </table>
 </td>
 <td><input type="button" value="clear all" onclick="clear_rotation()"></td>
+<td>Race bonus<br><input type="number" id="race_bonus" name="race_bonus" min="0" max="100" value="60" onchange="update_computed_stat()">%</td>
+<td id="computed_stat"></td>
 </table>
 <div style="display:inline-block;">
 <div class="tab">
@@ -162,6 +164,55 @@ My Presets
 <p id="debug"></p>
 </div>
 <script>
+
+stat_pts = {
+  "데뷔전": [3, 15, 3],
+  "OP": [5, 20, 2],
+  "G23": [8, 25, 2],
+  "G1": [10, 35, 2],
+  "TS": [10, 30, 5],
+};
+
+function update_computed_stat() {
+  var computed_stat_td = $('#computed_stat')[0];
+  computed_stat_td.innerText = "";
+  var race_bonus = (100 + parseInt($('#race_bonus')[0].value)) / 100;
+  var exp_div = document.createElement("div");
+  exp_div.innerText = "(데뷔전/TS/칭호 포함)";
+  computed_stat_td.appendChild(exp_div);
+
+  var count_stat = {
+    "데뷔전": 1,
+    "OP": 0,
+    "G23": 0,
+    "G1": 0,
+    "TS": 3,
+  };
+  for (const race of window.rotation.get_all_races()) {
+    if (race.grade == "G I") {
+      count_stat["G1"] ++;
+    }
+    else if (race.grade == "G II" || race.grade == "G III") {
+      count_stat["G23"] ++;
+    }
+    else {
+      count_stat["OP"] ++;
+    }
+  }
+  var stats = get_title_rewards(window.rotation)[0];
+  var pts = 0;
+  for (const [grade, count] of Object.entries(count_stat)) {
+    stats += count * Math.floor(stat_pts[grade][0] * race_bonus) * stat_pts[grade][2];
+    pts += count * Math.floor(stat_pts[grade][1] * race_bonus);
+  }
+
+  var stats_div = document.createElement("div");
+  stats_div.innerText = stats + " 스탯";
+  computed_stat_td.appendChild(stats_div);
+  var pts_div = document.createElement("div");
+  pts_div.innerText = pts + " pts";
+  computed_stat_td.appendChild(pts_div);
+}
 
 function decorate_race_image(img, race) {
   img.classList.remove("mosaic");
@@ -587,6 +638,7 @@ function update_titles() {
     item.innerText = reward;
     reward_list.appendChild(item);
   }
+  update_computed_stat();
 }
 
 window.race_manager_ready = function() {
