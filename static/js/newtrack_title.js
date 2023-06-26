@@ -234,12 +234,24 @@ class NameFilterTitle extends CountTitle {
 }
 
 class FilterTitle extends CountTitle {
-  constructor(name, threshold, color, skill_bonus, stat_bonus, race_filter) {
+  constructor(name, threshold, color, skill_bonus, stat_bonus, race_filter, title) {
     super(name, threshold, color, skill_bonus, stat_bonus);
     this.race_filter = race_filter;
+    this._title = title;
   }
+
   get_count(rotation) {
     return rotation.count_race_filter(this.race_filter);
+  }
+
+  get title() {
+    return this._title;
+  }
+}
+
+class G123LocationFilterTitle extends FilterTitle {
+  constructor(name, threshold, color, skill_bonus, stat_bonus, locations) {
+    super(name, threshold, color, skill_bonus, stat_bonus, location_filter_gen_g123(locations), locations.join(", "))
   }
 }
 
@@ -343,16 +355,15 @@ window.Titles = [
   new DirtTitle("더트 전문가", 10, "silver", "", 20),
   new DirtTitle("더트 고수", 5, "silver", "", 10),
 
-
   new RaceListTitle("가련한 우마무스메", ["후츄 우마무스메 스테이크스", "한신 우마무스메 스테이크스", "교토 우마무스메 스테이크스", "나카야마 우마무스메 스테이크스", "후쿠시마 우마무스메 스테이크스"], 3, "silver", "", 10),
   new RaceListTitle("월드 우마무스메", ["재팬컵", "재팬 더트 더비", "아르헨티나 공화국배", "뉴질랜드 트로피", "아메리카 JCC", "사우디아라비아 로얄컵"], 3, "silver", "", 10),
   new RaceListTitle("주니어 우마무스메", ["케이오배 주니어 스테이크스", "데일리배 주니어 스테이크스", "하코다테 주니어 스테이크스", "니이가타 주니어 스테이크스", "삿포로 주니어 스테이크스", "코쿠라 주니어 스테이크스", "도쿄 스포츠배 주니어 스테이크스", "교토 주니어 스테이크스", "츄쿄 주니어 스테이크스", "후쿠시마 주니어 스테이크스"], 3, "silver", "", 10),
 
-  new FilterTitle("베테랑 우마무스메", 10, "bronze", "", 10, op_filter),
+  new FilterTitle("베테랑 우마무스메", 10, "bronze", "", 10, op_filter, "OP 이상의 레이스"),
 
-  new FilterTitle("홋카이도 마스터", 3, "bronze", "", 10, location_filter_gen_g123(["삿포로", "하코다테"])),
-  new FilterTitle("토호쿠 마스터", 3, "bronze", "", 10, location_filter_gen_g123(["후쿠시마", "니이가타", "모리오카"])),
-  new FilterTitle("칸토 마스터", 3, "bronze", "", 10, location_filter_gen_g123(["도쿄", "나카야마", "오이", "카와사키", "후나바시"])),
-  new FilterTitle("서일본 마스터", 3, "bronze", "", 10, location_filter_gen_g123(["츄쿄", "한신", "교토"])),
-  new FilterTitle("코쿠라 마스터", 3, "bronze", "", 10, location_filter_gen_g123(["코쿠라"])),
+  new G123LocationFilterTitle("홋카이도 마스터", 3, "bronze", "", 10, ["삿포로", "하코다테"]),
+  new G123LocationFilterTitle("토호쿠 마스터", 3, "bronze", "", 10, ["후쿠시마", "니이가타", "모리오카"]),
+  new G123LocationFilterTitle("칸토 마스터", 3, "bronze", "", 10, ["도쿄", "나카야마", "오이", "카와사키", "후나바시"]),
+  new G123LocationFilterTitle("서일본 마스터", 3, "bronze", "", 10, ["츄쿄", "한신", "교토"]),
+  new G123LocationFilterTitle("코쿠라 마스터", 3, "bronze", "", 10, ["코쿠라"]),
 ];
