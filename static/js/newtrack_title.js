@@ -19,13 +19,15 @@ class TitleProperties {
     this.skill_bonus = skill_bonus;
     this.stat_bonus = stat_bonus;
   }
-  title_repr(name, progress_repr) {
+  title_repr(name, progress_repr, show_stat=false) {
     var repr = name + " (" + progress_repr + ")";
-    if (this.skill_bonus.length > 0) {
-      repr += " - " + this.skill_bonus;
-    }
-    if (this.stat_bonus > 0) {
-      repr += " - 스탯 " + this.stat_bonus;
+    if (show_stat) {
+      if (this.skill_bonus.length > 0) {
+        repr += " - " + this.skill_bonus;
+      }
+      if (this.stat_bonus > 0) {
+        repr += " - 스탯 " + this.stat_bonus;
+      }
     }
     return repr;
   }
@@ -132,8 +134,8 @@ class ListCondition extends CountCondition {
 }
 
 class RaceListCondition extends ListCondition {
-  constructor(race_names, threshold) {
-    super(race_names.map(race_name => new RaceCondition(race_name)), threshold, "레이스");
+  constructor(race_names, threshold, prefix) {
+    super(race_names.map(race_name => new RaceCondition(race_name)), threshold, prefix);
   }
 }
 
@@ -143,8 +145,8 @@ class RaceListTitle extends RaceListCondition {
     this.name = name;
     this.title_property = new TitleProperties(color, skill_bonus, stat_bonus);
   }
-  repr(rotation) {
-    return this.title_property.title_repr(this.name, this.prog(rotation));
+  repr(rotation, show_stat=false) {
+    return this.title_property.title_repr(this.name, this.prog(rotation), show_stat);
   }
 }
 
@@ -180,8 +182,8 @@ class ListUma extends ListCondition {
     this.name = name;
     this.title_property = new TitleProperties(color, skill_bonus, stat_bonus);
   }
-  repr(rotation) {
-    return this.title_property.title_repr(this.name, this.prog(rotation));
+  repr(rotation, show_stat=false) {
+    return this.title_property.title_repr(this.name, this.prog(rotation), show_stat);
   }
 }
 
@@ -192,8 +194,8 @@ class CountTitle extends CountCondition {
     this.name = name;
     this.title_property = new TitleProperties(color, skill_bonus, stat_bonus);
   }
-  repr(rotation) {
-    return this.title_property.title_repr(this.name, this.prog(rotation));
+  repr(rotation, show_stat=false) {
+    return this.title_property.title_repr(this.name, this.prog(rotation), show_stat);
   }
 }
 
@@ -283,15 +285,15 @@ function stat_bonus_when_remove(date_id) {
 window.Titles = [
   new ListUma("베스트 우마무스메", [
       new CharUma(),
-      new RaceListCondition(["텐노상 (봄)", "타카라즈카 기념", "재팬컵", "텐노상 (가을)", "오사카배", "아리마 기념"], 2)
+      new RaceListCondition(["텐노상 (봄)", "타카라즈카 기념", "재팬컵", "텐노상 (가을)", "오사카배", "아리마 기념"], 2, "G I 베스트 레이스")
     ], 2, "gold", "", 30),
   new ListUma("원더풀 우마무스메", [
       new CharUma(),
-      new ListCondition([new ClassicRaceCondition("재팬컵"), new ClassicRaceCondition("아리마 기념")], 1, "클래식 레이스")
+      new ListCondition([new ClassicRaceCondition("재팬컵"), new ClassicRaceCondition("아리마 기념")], 1, "G I 원더풀 클래식 레이스")
     ], 2, "gold", "", 30),
   new ListUma("퀸 우마무스메", [
       new HeroineUma(),
-      new RaceListCondition(["빅토리아 마일", "한신 쥬버나일 필리스"], 2),
+      new RaceListCondition(["빅토리아 마일", "한신 쥬버나일 필리스"], 2, "G I 퀸 마일 레이스"),
       new ListCondition([new ClassicRaceCondition("엘리자베스 여왕배"), new SeniorRaceCondition("엘리자베스 여왕배")], 2, "여왕배 2연패")
     ], 3, "gold", "", 30),
   new RaceListTitle("고속 마일러", ["NHK 마일컵", "야스다 기념", "마일 챔피언십"], 3, "gold", "", 30),

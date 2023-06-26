@@ -544,18 +544,18 @@ function create_condition_li(condition) {
   return li;
 }
 
-function update_condition(condition) {
+function update_condition(condition, show_stat=null) {
   update_childs(condition.childs);
-  condition.text_elem.innerText = condition.repr(window.rotation);
+  condition.text_elem.innerText = (show_stat != null) ? condition.repr(window.rotation, show_stat): condition.repr(window.rotation);
   condition.text_elem.className = condition.check(window.rotation) ? "true" : "false";
   if (condition.title != null) {
     condition.text_elem.title = condition.title;
   }
 }
 
-function update_childs(childs) {
+function update_childs(childs, show_stat) {
   for (const child of childs) {
-    update_condition(child);
+    update_condition(child, show_stat);
   }
 }
 
@@ -570,7 +570,7 @@ function create_titles() {
 }
 
 function update_titles() {
-  update_childs(window.Titles);
+  update_childs(window.Titles, true);
   [stat_bonus, skill_bonuses] = get_title_rewards(window.rotation);
 
   rewards = [stat_bonus + " 스탯"];
