@@ -34,21 +34,23 @@
 <div style="margin: 25px;">
 <table>
 <td style="text-align:left;">
-<div>
-<input id="grass" type="checkbox" checked onclick="update_checkbox_class_all()">잔디
-<input id="dirt" type="checkbox" checked onclick="update_checkbox_class_all()">더트
-</div>
-<div>
-<input id="short" type="checkbox" checked onclick="update_checkbox_class_all()">단거리
-<input id="mile" type="checkbox" checked onclick="update_checkbox_class_all()">마일
-<input id="mid" type="checkbox" checked onclick="update_checkbox_class_all()">중거리
-<input id="long" type="checkbox" checked onclick="update_checkbox_class_all()">장거리
-</div>
-<div>
-<input id="op" type="checkbox" onclick="clear_selector()">Op
-<input id="pre_op" type="checkbox" onclick="clear_selector()">Pre-Op
-<input id="show_diff" type="checkbox" onclick="change_show_diff()">Show-Diff
-</div>
+<table id="checkboxes">
+<tr>
+<td><label><input id="grass" type="checkbox" checked onclick="update_checkbox_class_all()">잔디</label></td>
+<td><label><input id="dirt" type="checkbox" checked onclick="update_checkbox_class_all()">더트</label></td>
+</tr>
+<tr>
+<td><label><input id="short" type="checkbox" checked onclick="update_checkbox_class_all()">단거리</label></td>
+<td><label><input id="mile" type="checkbox" checked onclick="update_checkbox_class_all()">마일</label></td>
+<td><label><input id="mid" type="checkbox" checked onclick="update_checkbox_class_all()">중거리</label></td>
+<td><label><input id="long" type="checkbox" checked onclick="update_checkbox_class_all()">장거리</label></td>
+</tr>
+<tr>
+<td><label><input id="op" type="checkbox" onclick="clear_selector()">Op</label></td>
+<td><label><input id="pre_op" type="checkbox" onclick="clear_selector()">Pre-Op</label></td>
+<td><label><input id="show_diff" type="checkbox" onclick="change_show_diff()">Show-Diff</label></td>
+</tr>
+</table>
 </td>
 <td style="text-align:center;">
     <table>
@@ -164,6 +166,26 @@ My Presets
 <p id="debug"></p>
 </div>
 <script>
+
+checkbox_ids = ["grass", "dirt", "short", "mile", "mid", "long","op", "pre_op", "show_diff"];
+function save_checkbox_status() {
+  var checkboxes = {};
+  for(const checkbox_id of checkbox_ids) {
+    checkboxes[checkbox_id] = $('#' + checkbox_id)[0].checked;
+  }
+  window.localStorage.setItem("checkboxes", JSON.stringify(checkboxes));
+}
+
+function load_checkbox_status() {
+  var checkbox_str = window.localStorage.getItem("checkboxes");
+  if (checkbox_str == null) return {};
+  var checkboxes = JSON.parse(checkbox_str);
+  for(const checkbox_id of checkbox_ids) {
+    if (checkbox_id in checkboxes) {
+      $('#' + checkbox_id)[0].checked = checkboxes[checkbox_id];
+    }
+  }
+}
 
 stat_pts = {
   "데뷔전": [3, 15, 3],
@@ -284,7 +306,7 @@ function import_text() {
 }
 
 function get_local_presets() {
-  presets = window.localStorage.getItem("presets");
+  var presets = window.localStorage.getItem("presets");
   if (presets == null) return [];
   return JSON.parse(presets);
 }
@@ -476,6 +498,7 @@ function draw_races() {
 }
 
 function clear_selector() {
+  save_checkbox_status();
   var selector = $("#selector")[0];
   selector.innerText = '';
 }
@@ -642,6 +665,7 @@ function update_titles() {
 }
 
 window.race_manager_ready = function() {
+  load_checkbox_status();
   var date_id_list = window.race_manager.date_id_list;
   for (var i = 0; i < date_id_list.length; i+=4) {
     var jcs = date_id_list[i][0];

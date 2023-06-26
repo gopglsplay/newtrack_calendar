@@ -205,3 +205,11 @@ body,div,ul,li{margin:0; padding:0;}
 #computed_stat {
   font-size: 12px;
 }
+
+#checkboxes label {
+  margin-bottom: 0px;
+}
+
+#checkboxes td {
+  text-align: left;
+}
