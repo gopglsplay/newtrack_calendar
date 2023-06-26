@@ -79,19 +79,27 @@
 
 </div>
 <div>
-<textarea id="json_area" cols="40" rows="5"></textarea>
-<div>
-<input type="button" value="export" onclick="export_text()">
-<input type="button" value="import" onclick="import_text()">
-</div>
 <hr>
 <div>
-Presets
+My Presets
+<table class="preset_table">
+<thead>
+  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th><th></th></tr>
+</thead>
+<tbody id="my_rotation_presets">
+</tbody>
+</table>
+
+<input type="button" value="save new" onclick="save_new()">
+
 <hr>
 <div>
 <a href="https://umamusumelabo.com/beginner/race-rotation-guide" target="_blank">umamusumelabo.com race-rotation-guide</a><br>
 <table class="preset_table">
-  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
+<thead>
+  <tr><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th><th></th></tr>
+</thead>
+<tbody>
   <tr><td>마일 적성이 있는 중장거리 말딸</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[0])"><br></td></tr>
   <tr><td>오구리캡</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[1])"><br></td></tr>
   <tr><td>보드카</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[2])"><br></td></tr>
@@ -100,6 +108,7 @@ Presets
   <tr><td>사쿠라 박신 오</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[5])"><br></td></tr>
   <tr><td>타이키 셔틀</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[6])"><br></td></tr>
   <tr><td>스마트 팔콘 잔디개조</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[7])"><br></td></tr>
+</tbody>
 </table>
 </div>
 <hr>
@@ -112,6 +121,14 @@ Presets
 </div>
 </div>
 </div>
+
+<hr>
+<textarea id="json_area" cols="40" rows="5"></textarea>
+<div>
+<input type="button" value="export" onclick="export_text()">
+<input type="button" value="import" onclick="import_text()">
+</div>
+
 <p id="debug"></p>
 </div>
 <script>
@@ -153,8 +170,21 @@ function update_checkbox_class_all() {
   }
 }
 
+function get_rotation_text() {
+  return btoa(JSON.stringify(window.rotation.date_id_to_race_id));
+}
+
+function get_rotation_red_set() {
+  var stat_set = new Set();
+  for (const race of window.rotation.get_all_races()) {
+    stat_set.add(race.track);
+    stat_set.add(dist_to_text(race.distance));
+  }
+  return Array.from(stat_set);
+}
+
 function export_text() {
-  $("#json_area")[0].value = btoa(JSON.stringify(window.rotation.date_id_to_race_id));
+  $("#json_area")[0].value = get_rotation_text();
 }
 
 function import_text() {
@@ -162,6 +192,156 @@ function import_text() {
   draw_races();
   update_titles();
   update_checkbox_class_all();
+}
+
+function get_local_presets() {
+  presets = window.localStorage.getItem("presets");
+  if (presets == null) return [];
+  return JSON.parse(presets);
+}
+
+function save_local_presets(presets) {
+  window.localStorage.setItem("presets", JSON.stringify(presets));
+}
+
+function save_new() {
+  presets = get_local_presets();
+  presets.push(["나만의 로테이션",
+    get_rotation_red_set(),
+    window.rotation.get_all_races().length,
+    get_title_rewards(window.rotation)[0],
+    get_rotation_text()]);
+  save_local_presets(presets);
+  render_rotation_presets();
+}
+
+function save_preset(index) {
+  presets = get_local_presets();
+  presets[index] = ["나만의 로테이션",
+    get_rotation_red_set(),
+    window.rotation.get_all_races().length,
+    get_title_rewards(window.rotation)[0],
+    get_rotation_text()];
+  save_local_presets(presets);
+  render_rotation_presets();
+}
+
+function delete_preset(index) {
+  presets = get_local_presets();
+  presets.splice(index, 1);
+  save_local_presets(presets);
+  render_rotation_presets();
+}
+
+function preset_move_up(index) {
+  console.log("move up");
+  if (index == 0) return;
+  presets = get_local_presets();
+
+  [presets[index-1], presets[index]] = [presets[index], presets[index-1]];
+  save_local_presets(presets);
+  render_rotation_presets();
+}
+
+function preset_move_down(index) {
+  console.log("move down");
+  presets = get_local_presets();
+  if (index+1 == presets.length) return;
+  [presets[index+1], presets[index]] = [presets[index], presets[index+1]];
+  save_local_presets(presets);
+  render_rotation_presets();
+}
+
+function create_preset_elem(preset, index) {
+  var tr = document.createElement("tr");
+
+  var title_td = document.createElement("td");
+  title_td.innerText = preset[0];
+  title_td.setAttribute("contenteditable", "true");
+  title_td.addEventListener("input", function() {
+    presets = get_local_presets();
+    presets[index][0] = title_td.innerText;
+    save_local_presets(presets);
+  }, false);
+
+  tr.appendChild(title_td);
+
+  for (const red of ["잔디", "더트", "단거리", "마일", "중거리", "장거리"]) {
+    var red_td = document.createElement("td");
+    red_td.innerText = preset[1].includes(red) ? "O": "";
+    tr.appendChild(red_td);
+  }
+  var number_td = document.createElement("td");
+  number_td.innerText = preset[2];
+  tr.appendChild(number_td);
+  var stat_td = document.createElement("td");
+  stat_td.innerText = preset[3];
+  tr.appendChild(stat_td);
+
+  var button_td = document.createElement("td");
+
+  var button_div = document.createElement("div");
+  button_div.classList.add("button_div");
+  var load_input = document.createElement("input");
+  load_input.value = "load";
+  load_input.type = "button";
+
+  load_input.addEventListener("click", function() {
+    load_preset(preset[4]);
+  });
+  button_div.appendChild(load_input);
+
+  var save_input = document.createElement("input");
+  save_input.value = "save";
+  save_input.type = "button";
+
+  save_input.addEventListener("click", function() {
+    save_preset(index);
+  });
+  button_div.appendChild(save_input);
+
+  var delete_input = document.createElement("input");
+  delete_input.value = "delete";
+  delete_input.type = "button";
+
+  delete_input.addEventListener("click", function() {
+    delete_preset(index);
+  });
+  button_div.appendChild(delete_input);
+
+  button_td.appendChild(button_div);
+  tr.appendChild(button_td);
+
+  var up_down_td = document.createElement("td");
+
+  var up_i = document.createElement("i");
+  up_i.classList.add("arrow");
+  up_i.classList.add("up");
+  up_i.addEventListener("click", function() {
+    preset_move_up(index);
+  });
+  up_down_td.appendChild(up_i);
+
+  var down_i = document.createElement("i");
+  down_i.classList.add("arrow");
+  down_i.classList.add("down");
+  down_i.addEventListener("click", function() {
+    preset_move_down(index);
+  });
+  up_down_td.appendChild(down_i);
+  tr.appendChild(up_down_td);
+
+  return tr;
+}
+
+function render_rotation_presets() {
+  var tbody = $("#my_rotation_presets")[0];
+  tbody.innerHTML = "";
+
+  presets = get_local_presets();
+  for (const [index, preset] of presets.entries()) {
+    tbody.appendChild(create_preset_elem(preset, index));
+  }
 }
 
 function getJcsText(jcs) {
@@ -421,6 +601,7 @@ window.race_manager_ready = function() {
   draw_races();
   create_titles();
   update_titles();
+  render_rotation_presets();
 }
 </script>
 

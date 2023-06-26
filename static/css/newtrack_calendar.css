@@ -118,6 +118,18 @@ body,div,ul,li{margin:0; padding:0;}
   width: 70px;
 }
 
+.preset_table .button_div{
+  display: flex;
+}
+.preset_table input{
+  display: inline;
+}
+.preset_table .text_div{
+  display: inline;
+}
+.preset_table .up{
+  margin-right: 12px;
+}
 /* 모든 체크박스를 숨김 처리 한다. */
 #title_list input[type="checkbox"] {
     display:none;
@@ -144,4 +156,31 @@ body,div,ul,li{margin:0; padding:0;}
   color: black;
   display: inline-block;
   margin-right: 3px;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

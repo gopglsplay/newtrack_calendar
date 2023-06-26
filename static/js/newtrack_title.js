@@ -206,16 +206,6 @@ class NameFilterTitle extends CountTitle {
   }
 }
 
-function cute_filter(race_name) {
-  return race_name.indexOf("우마무스메 스테이크스") != -1;
-}
-
-function junior_filter(race_name) {
-  return race_name.indexOf("주니어 스테이크스") != -1;
-}
-
-
-
 class FilterTitle extends CountTitle {
   constructor(name, threshold, color, skill_bonus, stat_bonus, race_filter) {
     super(name, threshold, color, skill_bonus, stat_bonus);
@@ -327,9 +317,9 @@ window.Titles = [
   new DirtTitle("더트 고수", 5, "silver", "", 10),
 
 
-  new NameFilterTitle("귀여운 우마무스메", 3, "silver", "", 10, cute_filter),
+  new RaceListTitle("가련한 우마무스메", ["후츄 우마무스메 스테이크스", "한신 우마무스메 스테이크스", "교토 우마무스메 스테이크스", "나카야마 우마무스메 스테이크스", "후쿠시마 우마무스메 스테이크스"], 3, "silver", "", 10),
   new RaceListTitle("월드 우마무스메", ["재팬컵", "재팬 더트 더비", "아르헨티나 공화국배", "뉴질랜드 트로피", "아메리카 JCC", "사우디아라비아 로얄컵"], 3, "silver", "", 10),
-  new NameFilterTitle("주니어 우마무스메", 3, "silver", "", 10, junior_filter),
+  new RaceListTitle("주니어 우마무스메", ["하코다테 주니어 스테이크스", "니이가타 주니어 스테이크스", "삿포로 주니어 스테이크스", "코쿠라 주니어 스테이크스", "도쿄 스포츠배 주니어 스테이크스", "교토 주니어 스테이크스"], 3, "silver", "", 10),
 
   new FilterTitle("베테랑 우마무스메", 10, "bronze", "", 10, op_filter),
 
