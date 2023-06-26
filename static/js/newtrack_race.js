@@ -2,8 +2,7 @@ function dist_to_text(distance) {
   if (distance <= 1400) return "단거리";
   if (distance <= 1800) return "마일";
   if (distance <= 2400) return "중거리";
-  if (distance <= 3200) return "장거리";
-  return "?거리";
+  return "장거리";
 }
 
 function getJCS(text) {
