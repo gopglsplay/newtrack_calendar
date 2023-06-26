@@ -217,7 +217,7 @@ function save_new() {
 
 function save_preset(index) {
   presets = get_local_presets();
-  presets[index] = ["나만의 로테이션",
+  presets[index] = [presets[index][0],
     get_rotation_red_set(),
     window.rotation.get_all_races().length,
     get_title_rewards(window.rotation)[0],
