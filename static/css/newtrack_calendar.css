@@ -74,12 +74,16 @@ body,div,ul,li{margin:0; padding:0;}
 .tabnav li a:hover,
 .tabnav li a.active{background:#fff; color:#7ea21e; }
 
-#C_7_A,#C_7_B,#C_8_A,#C_8_B,#S_7_A,#S_7_B,#S_8_A,#S_8_B {
+#C_7_A,#C_7_B,#C_8_A,#C_8_B,#S_7_A,#S_7_B,#S_8_A,#S_8_B,#example_b {
   background-color: skyblue;
 }
 
-#J_9_B,#J_12_B,#C_3_B,#C_6_B,#C_9_B,#C_12_B,#S_3_B,#S_6_B,#S_9_B,#S_12_B {
+#J_9_B,#J_12_B,#C_3_B,#C_6_B,#C_9_B,#C_12_B,#S_3_B,#S_6_B,#S_9_B,#S_12_B,#example_y {
   background-color: yellow;
+}
+
+.tab {
+  margin-right: 10px;
 }
 
 .tabcontent div{

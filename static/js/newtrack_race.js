@@ -86,7 +86,7 @@ class Rotation {
   }
 
   set_date_id_to_race_id(date_id_to_race_id) {
-    Object.assign(this.date_id_to_race_id, date_id_to_race_id);
+    this.date_id_to_race_id = Object.assign({}, date_id_to_race_id);
   }
 
   get_race_id(date_id) {
