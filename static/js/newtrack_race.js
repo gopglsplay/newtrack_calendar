@@ -39,9 +39,9 @@ function date_text_to_id(text) {
 
 
 function getJcsText(jcs) {
-  if (jcs == 'J') return "주니어배";
-  if (jcs == 'C') return "클래식배";
-  if (jcs == 'S') return "시니어배";
+  if (jcs == 'J') return "주니어급";
+  if (jcs == 'C') return "클래식급";
+  if (jcs == 'S') return "시니어급";
   return "?";
 }
 
