@@ -32,12 +32,16 @@
 </head>
 <body>
 <div style="margin: 25px;">
-<table>
+<table class="layout_table">
+<tr>
+<td>
+<table class="top_table">
 <td style="text-align:left;">
 <table id="checkboxes">
 <tr>
 <td><label><input id="grass" type="checkbox" checked onclick="update_checkbox_class_all()">잔디</label></td>
 <td><label><input id="dirt" type="checkbox" checked onclick="update_checkbox_class_all()">더트</label></td>
+<td colspan="2"><input type="button" value="clear all" onclick="clear_rotation()"></td>
 </tr>
 <tr>
 <td><label><input id="short" type="checkbox" checked onclick="update_checkbox_class_all()">단거리</label></td>
@@ -54,15 +58,14 @@
 </td>
 <td style="text-align:center;">
     <table>
-        색칠
-        <td id="example_y">상점 막턴</td>
-        <td id="example_b">여름 합숙</td>
+        <tr><td id="example_y">상점 막턴</td></tr>
+        <tr><td id="example_b">여름 합숙</td></tr>
     </table>
 </td>
-<td><input type="button" value="clear all" onclick="clear_rotation()"></td>
-<td>Race bonus<br><input type="number" id="race_bonus" name="race_bonus" min="0" max="100" value="60" onchange="update_computed_stat()">%</td>
-<td id="computed_stat"></td>
 </table>
+</td>
+<td id="reward_list"></td></tr>
+<td>
 <div style="display:inline-block;">
 <div class="tab">
 <ul class="tabnav">
@@ -86,13 +89,28 @@
   </div>
 </div>
 </div><!--tab-->
-
+</div>
+<td>
+<div class="title_div"><ul id="title_list"></ul></div>
+</td>
+</table>
 <div id="selector"></div>
 
-<div class="title_div"><ol id="reward_list"></ol><ul id="title_list"></ul></div>
-
-</div>
 <div>
+<div>
+<table class="stat_table">
+<thead>
+  <tr><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
+</thead>
+<tbody>
+  <tr id="stat_tr"></tr>
+</tbody>
+</table>
+<table class="extra_table">
+    <tr><td>레이스 보너스: <input type="number" id="race_bonus" name="race_bonus" min="0" max="100" value="60" onchange="update_computed_stat()">%</td></tr>
+    <tr><td id="computed_stat"></td></tr>
+</table>
+</div>
 <hr>
 <div>
 My Presets
@@ -195,6 +213,36 @@ stat_pts = {
   "TS": [10, 30, 5],
 };
 
+function update_stat_table() {
+  var count_stat = {
+    "잔디": 0,
+    "더트": 0,
+    "단거리": 0,
+    "마일": 0,
+    "중거리": 0,
+    "장거리": 0,
+    "출전수": 0,
+    "스탯": get_title_rewards(window.rotation)[0],
+  };
+  var td_keys = ["잔디", "더트", "단거리", "마일", "중거리", "장거리", "출전수", "스탯"];
+  for (const race of window.rotation.get_all_races()) {
+    count_stat["출전수"] ++;
+    count_stat[race.track] ++;
+    count_stat[dist_to_text(race.distance)] ++;
+  }
+  var stat_tr = $('#stat_tr')[0];
+  stat_tr.innerText = "";
+  for (const key of td_keys) {
+    var stat_td = document.createElement("td");
+    if (["출전수", "스탯"].includes(key)) {
+      stat_td.innerText = count_stat[key];
+    } else {
+      stat_td.innerText = (count_stat[key] == 0) ? "" : count_stat[key];
+    }
+    stat_tr.appendChild(stat_td);
+  }
+}
+
 function update_computed_stat() {
   var computed_stat_td = $('#computed_stat')[0];
   computed_stat_td.innerText = "";
@@ -234,16 +282,11 @@ function update_computed_stat() {
   var pts_div = document.createElement("div");
   pts_div.innerText = pts + " pts";
   computed_stat_td.appendChild(pts_div);
+
+  update_stat_table();
 }
 
-function decorate_race_image(img, race) {
-  img.classList.remove("mosaic");
-  if (race == null) {
-    img.title = "";
-    return;
-  }
-  img.title = race.grade + " / " + race.location + " / " + race.track + " / " + race.distance + "m(" + dist_to_text(race.distance) + ") / " + race.direction;
-
+function check_mosaic(race) {
   var [grass, dirt, short, mile, mid, long] = ["grass", "dirt", "short", "mile", "mid", "long"].map(key => $('input:checkbox[id="' + key + '"]').is(":checked"))
 
   var mosaic = false;
@@ -255,7 +298,17 @@ function decorate_race_image(img, race) {
   if (!mid && dist_to_text(race["distance"]) == "중거리") mosaic = true;
   if (!long && dist_to_text(race["distance"]) == "장거리") mosaic = true;
 
-  if (mosaic) img.classList.add("mosaic");
+  return mosaic;
+}
+
+function decorate_race_image(img, race) {
+  img.classList.remove("mosaic");
+  if (race == null) {
+    img.title = "";
+    return;
+  }
+  img.title = race.grade + " / " + race.location + " / " + race.track + " / " + race.distance + "m(" + dist_to_text(race.distance) + ") / " + race.direction;
+  if (check_mosaic(race)) img.classList.add("mosaic");
 }
 
 function change_show_diff() {
@@ -566,6 +619,7 @@ function update_selector() {
       var race = window.race_manager.get_race(race_id);
       if (race.grade == 'OP' && !op) continue;
       if (race.grade == 'Pre-OP' && !pre_op) continue;
+      // if (check_mosaic(race)) continue;
       add_choice(race);
     }
   }
@@ -647,11 +701,12 @@ function update_titles() {
   update_childs(window.Titles, true);
   [stat_bonus, skill_bonuses] = get_title_rewards(window.rotation);
 
-  rewards = [stat_bonus + " 스탯"];
+  rewards = ["칭호 보너스"];
+  rewards.push(stat_bonus + " 스탯");
   for (const skill_bonus of skill_bonuses) {
     rewards.push(skill_bonus);
   }
-  rewards.push(["(출전수 " + window.rotation.count_all_races() + "전)"])
+  rewards.push("(출전수 " + window.rotation.count_all_races() + "전)")
 
   var reward_list = $("#reward_list")[0];
   reward_list.innerText = "";

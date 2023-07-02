@@ -295,65 +295,64 @@ function stat_bonus_when_remove(date_id) {
 }
 
 window.Titles = [
-  new ListUma("베스트 우마무스메", [
-      new CharUma(),
-      new RaceListCondition(["텐노상 (봄)", "타카라즈카 기념", "재팬컵", "텐노상 (가을)", "오사카배", "아리마 기념"], 2, "G I 베스트 레이스")
-    ], 2, "gold", "", 30),
+  new CharUma(),
   new ListUma("원더풀 우마무스메", [
       new CharUma(),
       new ListCondition([new ClassicRaceCondition("재팬컵"), new ClassicRaceCondition("아리마 기념")], 1, "G I 원더풀 클래식 레이스")
     ], 2, "gold", "", 30),
+  new ListUma("베스트 우마무스메", [
+      new CharUma(),
+      new RaceListCondition(["텐노상 (봄)", "타카라즈카 기념", "재팬컵", "텐노상 (가을)", "오사카배", "아리마 기념"], 2, "G I 베스트 레이스")
+    ], 2, "gold", "", 30),
+  new ListUma("레전드 우마무스메", [
+      new ListCondition([new CharUma(), new HeroineUma()], 1, "칭호"),
+      new SpringUma(),
+      new FallUma(),
+    ], 3, "gold", "뒷심 Lv+1", 0),
+  new HeroineUma(),
+  new ListUma("프린세스 우마무스메", [
+      new HeroineUma(),
+      new ClassicRaceCondition("엘리자베스 여왕배"),
+    ], 2, "gold", "", 20),
   new ListUma("퀸 우마무스메", [
       new HeroineUma(),
       new RaceListCondition(["빅토리아 마일", "한신 쥬버나일 필리스"], 2, "G I 퀸 마일 레이스"),
       new ListCondition([new ClassicRaceCondition("엘리자베스 여왕배"), new SeniorRaceCondition("엘리자베스 여왕배")], 2, "여왕배 2연패")
     ], 3, "gold", "", 30),
   new RaceListTitle("고속 마일러", ["NHK 마일컵", "야스다 기념", "마일 챔피언십"], 3, "gold", "", 30),
+  new RaceListTitle("신속 마일러", ["NHK 마일컵", "벚꽃상", "야스다 기념", "빅토리아 마일", "마일 챔피언십", "한신 쥬버나일 필리스", "아사히배 퓨처러티 스테이크스"], 6, "gold", "마일 직선 Lv+1", 0),
   new RaceListTitle("광속 스프린터", ["타카마츠노미야 기념", "스프린터즈 스테이크스", "야스다 기념", "마일 챔피언십"], 4, "silver", "", 30),
-  new CharUma(),
-  new HeroineUma(),
-  new ListUma("프린세스 우마무스메", [
-      new HeroineUma(),
-      new ClassicRaceCondition("엘리자베스 여왕배"),
-    ], 2, "gold", "", 20),
   new RaceListTitle("수완 스프린터", ["타카마츠노미야 기념", "스프린터즈 스테이크스"], 2, "silver", "", 20),
   new RaceListTitle("표창패의 패자", ["텐노상 (봄)", "텐노상 (가을)"], 2, "silver", "", 20),
   new SpringUma(),
   new FallUma(),
-  new ListUma("더트 스프린터", [
-      new ClassicRaceCondition("JBC 스프린트"),
-      new SeniorRaceCondition("JBC 스프린트"),
-    ], 2, "silver", "", 20),
-  new RaceListTitle("더트의 신성", ["유니콘 스테이크스", "레오파드 스테이크스", "재팬 더트 더비"], 3, "silver", "", 10),
   new ListUma("명인 우마무스메", [
       new TrackDistanceTypeCondition("잔디", "단거리", 1),
       new TrackDistanceTypeCondition("잔디", "마일", 1),
       new TrackDistanceTypeCondition("잔디", "중거리", 1),
       new TrackDistanceTypeCondition("잔디", "장거리", 1),
     ], 4, "silver", "", 10),
+  new BasisDistTitle("근간거리의 패자", 10, "silver", "", 20),
+  new NonBasisDistTitle("비근간거리의 패자", 10, "silver", "", 20),
   new ListUma("달인 우마무스메", [
       new TrackDistanceTypeCondition("더트", "단거리", 1),
       new TrackDistanceTypeCondition("더트", "마일", 1),
       new TrackDistanceTypeCondition("더트", "중거리", 1),
     ], 3, "silver", "", 10),
-  new RaceListTitle("신속 마일러", ["NHK 마일컵", "벚꽃상", "야스다 기념", "빅토리아 마일", "마일 챔피언십", "한신 쥬버나일 필리스", "아사히배 퓨처러티 스테이크스"], 6, "gold", "마일 직선 Lv+1", 0),
-  new ListUma("레전드 우마무스메", [
-      new ListCondition([new CharUma(), new HeroineUma()], 1, "칭호"),
-      new SpringUma(),
-      new FallUma(),
-    ], 3, "gold", "뒷심 Lv+1", 0),
+  new ListUma("더트 스프린터", [
+      new ClassicRaceCondition("JBC 스프린트"),
+      new SeniorRaceCondition("JBC 스프린트"),
+    ], 2, "silver", "", 20),
+  new RaceListTitle("더트의 신성", ["유니콘 스테이크스", "레오파드 스테이크스", "재팬 더트 더비"], 3, "silver", "", 10),
 
-  new BasisDistTitle("근간거리의 패자", 10, "silver", "", 20),
-  new NonBasisDistTitle("비근간거리의 패자", 10, "silver", "", 20),
-
-  new G1DirtTitle("더트 G1 패자", 9, "gold", "레커맨드 Lv+1", 0),
-  new G1DirtTitle("더트 G1 제왕", 5, "silver", "", 30),
-  new G1DirtTitle("더트 G1 괴물", 4, "silver", "", 20),
   new G1DirtTitle("더트 G1 강자", 3, "silver", "", 20),
+  new G1DirtTitle("더트 G1 괴물", 4, "silver", "", 20),
+  new G1DirtTitle("더트 G1 제왕", 5, "silver", "", 30),
+  new G1DirtTitle("더트 G1 패자", 9, "gold", "레커맨드 Lv+1", 0),
 
-  new DirtTitle("더트 달인", 15, "gold", "", 20),
-  new DirtTitle("더트 전문가", 10, "silver", "", 20),
   new DirtTitle("더트 고수", 5, "silver", "", 10),
+  new DirtTitle("더트 전문가", 10, "silver", "", 20),
+  new DirtTitle("더트 달인", 15, "gold", "", 20),
 
   new RaceListTitle("가련한 우마무스메", ["후츄 우마무스메 스테이크스", "한신 우마무스메 스테이크스", "교토 우마무스메 스테이크스", "나카야마 우마무스메 스테이크스", "후쿠시마 우마무스메 스테이크스"], 3, "silver", "", 10),
   new RaceListTitle("월드 우마무스메", ["재팬컵", "재팬 더트 더비", "아르헨티나 공화국배", "뉴질랜드 트로피", "아메리카 JCC", "사우디아라비아 로얄컵"], 3, "silver", "", 10),
