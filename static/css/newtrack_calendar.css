@@ -189,6 +189,7 @@ body,div,body ul,li{margin:0; padding:0;}
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  pointer-events: none;
 }
 
 .right {
@@ -219,73 +220,11 @@ body,div,body ul,li{margin:0; padding:0;}
 
 #checkboxes label {
   margin-bottom: 0px;
+  width:70px;
 }
 
 #checkboxes td {
   text-align: left;
-}
-
-
-#checkboxes label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-#checkboxes [type="checkbox"] {
-  appearance: none;
-  position: relative;
-  border: max(2px, 0.1em) solid gray;
-  border-radius: 1.25em;
-  width: 2.25em;
-  height: 1.25em;
-}
-
-#checkboxes [type="checkbox"]::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  transform: scale(0.8);
-  background-color: gray;
-  transition: left 250ms linear;
-}
-
-#checkboxes [type="checkbox"]:checked {
-  background-color: tomato;
-  border-color: tomato;
-}
-
-#checkboxes [type="checkbox"]:checked::before {
-  background-color: white;
-  left: 1em;
-}
-
-#checkboxes [type="checkbox"]:disabled {
-  border-color: lightgray;
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-#checkboxes [type="checkbox"]:disabled:before {
-  background-color: lightgray;
-}
-
-#checkboxes [type="checkbox"]:disabled + span {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-#checkboxes [type="checkbox"]:focus-visible {
-  outline-offset: max(2px, 0.1em);
-  outline: max(2px, 0.1em) solid tomato;
-}
-
-#checkboxes [type="checkbox"]:enabled:hover {
-  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
 }
 
 .layout_table {
@@ -334,3 +273,19 @@ body .table {
 .table td, .table th {
   font-size: 14px;
 }
+
+.div_btn {
+  background-color: #0d6efd;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.div_btn:hover {
+  background-color: #0b5ed7;
+}
+
+#my_rotation_presets .disable_btn {
+  background-color: lightgray;
+  border-color: lightgray;
+}
+

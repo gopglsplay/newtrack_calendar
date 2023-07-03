@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <link rel="stylesheet" href="./static/css/newtrack_calendar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="./static/js/newtrack_race.js"></script>
     <script src="./static/js/newtrack_title.js"></script>
 
@@ -40,19 +41,19 @@
 <td style="text-align:left;">
 <table id="checkboxes">
 <tr>
-<td><label><input id="grass" type="checkbox" checked onclick="update_checkbox_class_all()">잔디</label></td>
-<td><label><input id="dirt" type="checkbox" checked onclick="update_checkbox_class_all()">더트</label></td>
+<td><input id="grass" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="grass">잔디</label></td>
+<td><input id="dirt" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="dirt">더트</label></td>
 </tr>
 <tr>
-<td><label><input id="short" type="checkbox" checked onclick="update_checkbox_class_all()">단거리</label></td>
-<td><label><input id="mile" type="checkbox" checked onclick="update_checkbox_class_all()">마일</label></td>
-<td><label><input id="mid" type="checkbox" checked onclick="update_checkbox_class_all()">중거리</label></td>
-<td><label><input id="long" type="checkbox" checked onclick="update_checkbox_class_all()">장거리</label></td>
+<td><input id="short" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="short">단거리</label></td>
+<td><input id="mile" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="mile">마일</label></td>
+<td><input id="mid" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="mid">중거리</label></td>
+<td><input id="long" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="long">장거리</label></td>
 </tr>
 <tr>
-<td><label><input id="op" type="checkbox" onclick="clear_selector()">Op</label></td>
-<td><label><input id="pre_op" type="checkbox" onclick="clear_selector()">Pre-Op</label></td>
-<td><label><input id="show_diff" type="checkbox" onclick="change_show_diff()">Show-Diff</label></td>
+<td><input id="op" type="checkbox" checked="" onclick="clear_selector()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="op">Op</label></td>
+<td><input id="pre_op" type="checkbox" checked="" onclick="clear_selector()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="pre_op">Pre-Op</label></td>
+<td><input id="show_diff" type="checkbox" checked="" onclick="change_show_diff()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="show_diff">Diff</label></td>
 </tr>
 </table>
 </td>
@@ -283,12 +284,22 @@ function update_computed_stat() {
     pts += count * Math.floor(stat_pts[grade][1] * race_bonus);
   }
 
-  var stats_div = document.createElement("div");
-  stats_div.innerText = stats + " 스탯";
-  computed_stat_td.appendChild(stats_div);
-  var pts_div = document.createElement("div");
-  pts_div.innerText = pts + " pts";
-  computed_stat_td.appendChild(pts_div);
+  var g1_stat_bonus = Math.floor(stat_pts["G1"][0] * race_bonus);
+  var g1_stat_bonus20 = Math.floor(g1_stat_bonus * 1.2) - g1_stat_bonus;
+  var g1_stat_bonus35= Math.floor(g1_stat_bonus * 1.35) - g1_stat_bonus;
+  var g1_sp_bonus = Math.floor(stat_pts["G1"][1] * race_bonus);
+  var g1_sp_bonus20 = Math.floor(g1_sp_bonus * 1.2) - g1_sp_bonus;
+  var g1_sp_bonus35= Math.floor(g1_sp_bonus * 1.35) - g1_sp_bonus;
+
+  var race_div = document.createElement("div");
+  race_div.innerText = stats + " 스탯 / " + pts + " pts";
+  computed_stat_td.appendChild(race_div);
+  var bonus20_div = document.createElement("div");
+  bonus20_div.innerText = "20%편자(G I) +" + g1_stat_bonus20 + " 스탯 / +" + g1_sp_bonus20 + "pts";
+  computed_stat_td.appendChild(bonus20_div);
+  var bonus35_div = document.createElement("div");
+  bonus35_div.innerText = "35%편자(G I) +" + g1_stat_bonus35 + " 스탯 / +" + g1_sp_bonus35 + "pts";
+  computed_stat_td.appendChild(bonus35_div);
 
   update_stat_table();
 }
@@ -429,7 +440,14 @@ function add_bootstrap_small_btn_class(input_elem) {
   input_elem.classList.add("btn-sm");
 }
 
-function create_preset_elem(preset, index) {
+function create_icon_element(name) {
+  var icon = document.createElement("i");
+  icon.classList.add("bi");
+  icon.classList.add("bi-" + name);
+  return icon;
+}
+
+function create_preset_elem(preset, index, disable_up=False, disable_down=False) {
   var tr = document.createElement("tr");
 
   var title_td = document.createElement("td");
@@ -459,56 +477,73 @@ function create_preset_elem(preset, index) {
 
   var button_div = document.createElement("div");
   button_div.classList.add("button_div");
-  var load_input = document.createElement("input");
-  load_input.value = "load";
-  load_input.type = "button";
-  add_bootstrap_small_btn_class(load_input);
 
-  load_input.addEventListener("click", function() {
+  var load_div = document.createElement("div");
+  load_div.classList.add("div_btn");
+  load_div.classList.add("round");
+  load_div.appendChild(create_icon_element("upload"));
+  add_bootstrap_small_btn_class(load_div);
+
+  load_div.addEventListener("click", function() {
     load_preset(preset[4]);
   });
-  button_div.appendChild(load_input);
+  button_div.appendChild(load_div);
 
-  var save_input = document.createElement("input");
-  save_input.value = "save";
-  save_input.type = "button";
-  add_bootstrap_small_btn_class(save_input);
+  var save_div = document.createElement("div");
+  save_div.classList.add("div_btn");
+  save_div.classList.add("round");
+  save_div.appendChild(create_icon_element("save"));
+  add_bootstrap_small_btn_class(save_div);
 
-  save_input.addEventListener("click", function() {
+  save_div.addEventListener("click", function() {
     save_preset(index);
   });
-  button_div.appendChild(save_input);
+  button_div.appendChild(save_div);
 
-  var delete_input = document.createElement("input");
-  delete_input.value = "delete";
-  delete_input.type = "button";
-  add_bootstrap_small_btn_class(delete_input);
+  var delete_div = document.createElement("div");
+  delete_div.classList.add("div_btn");
+  delete_div.classList.add("round");
+  delete_div.appendChild(create_icon_element("trash"));
+  add_bootstrap_small_btn_class(delete_div);
 
-  delete_input.addEventListener("click", function() {
+  delete_div.addEventListener("click", function() {
     delete_preset(index);
   });
-  button_div.appendChild(delete_input);
+  button_div.appendChild(delete_div);
 
   button_td.appendChild(button_div);
   tr.appendChild(button_td);
 
   var up_down_td = document.createElement("td");
+  up_down_td.classList.add("arrow_td");
 
-  var up_i = document.createElement("i");
-  up_i.classList.add("arrow");
-  up_i.classList.add("up");
-  up_i.addEventListener("click", function() {
+  var ud_button_div = document.createElement("div");
+  ud_button_div.classList.add("button_div");
+
+  var up_div = document.createElement("div");
+  up_div.classList.add("div_btn");
+  up_div.classList.add("round");
+  if (disable_up) up_div.classList.add("disable_btn");
+  up_div.appendChild(create_icon_element("arrow-up"));
+  add_bootstrap_small_btn_class(up_div);
+
+  up_div.addEventListener("click", function() {
     preset_move_up(index);
   });
-  up_down_td.appendChild(up_i);
+  ud_button_div.appendChild(up_div);
 
-  var down_i = document.createElement("i");
-  down_i.classList.add("arrow");
-  down_i.classList.add("down");
-  down_i.addEventListener("click", function() {
+  var down_div = document.createElement("div");
+  down_div.classList.add("div_btn");
+  down_div.classList.add("round");
+  if (disable_down) down_div.classList.add("disable_btn");
+  down_div.appendChild(create_icon_element("arrow-down"));
+  add_bootstrap_small_btn_class(down_div);
+
+  down_div.addEventListener("click", function() {
     preset_move_down(index);
   });
-  up_down_td.appendChild(down_i);
+  ud_button_div.appendChild(down_div);
+  up_down_td.appendChild(ud_button_div);
   tr.appendChild(up_down_td);
 
   return tr;
@@ -520,7 +555,7 @@ function render_rotation_presets() {
 
   presets = get_local_presets();
   for (const [index, preset] of presets.entries()) {
-    tbody.appendChild(create_preset_elem(preset, index));
+    tbody.appendChild(create_preset_elem(preset, index, index==0, index==(presets.length - 1)));
   }
 }
 
