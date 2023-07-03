@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <link rel="stylesheet" href="./static/css/newtrack_calendar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="./static/js/newtrack_race.js"></script>
     <script src="./static/js/newtrack_title.js"></script>
 
@@ -41,7 +42,6 @@
 <tr>
 <td><label><input id="grass" type="checkbox" checked onclick="update_checkbox_class_all()">잔디</label></td>
 <td><label><input id="dirt" type="checkbox" checked onclick="update_checkbox_class_all()">더트</label></td>
-<td colspan="2"><input type="button" value="clear all" onclick="clear_rotation()"></td>
 </tr>
 <tr>
 <td><label><input id="short" type="checkbox" checked onclick="update_checkbox_class_all()">단거리</label></td>
@@ -62,9 +62,11 @@
         <tr><td id="example_b">여름 합숙</td></tr>
     </table>
 </td>
+    <td><input type="button" value="clear all" onclick="clear_rotation()" class="btn btn-primary btn-sm clear-btn"></td>
 </table>
 </td>
 <td id="reward_list"></td></tr>
+<tr>
 <td>
 <div style="display:inline-block;">
 <div class="tab">
@@ -93,12 +95,10 @@
 <td>
 <div class="title_div"><ul id="title_list"></ul></div>
 </td>
-</table>
-<div id="selector"></div>
-
-<div>
-<div>
-<table class="stat_table">
+</tr>
+<tr>
+    <td>
+<table class="stat_table table table-bordered">
 <thead>
   <tr><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
 </thead>
@@ -106,15 +106,22 @@
   <tr id="stat_tr"></tr>
 </tbody>
 </table>
+    </td>
+    <td class="center">
 <table class="extra_table">
-    <tr><td>레이스 보너스: <input type="number" id="race_bonus" name="race_bonus" min="0" max="100" value="60" onchange="update_computed_stat()">%</td></tr>
+    <tr><td>레이스 보너스: <input type="number" id="race_bonus" name="race_bonus" min="0" max="100" value="60" onchange="update_computed_stat()" class="form-control">%</td></tr>
     <tr><td id="computed_stat"></td></tr>
 </table>
-</div>
+    </td>
+</tr>
+</table>
+<div id="selector"></div>
+
+<div>
 <hr>
 <div>
 My Presets
-<table class="preset_table">
+<table class="preset_table table table-bordered">
 <thead>
   <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th><th></th></tr>
 </thead>
@@ -122,24 +129,24 @@ My Presets
 </tbody>
 </table>
 
-<input type="button" value="save new" onclick="save_new()">
+<input type="button" value="save new" onclick="save_new()" class="btn btn-primary">
 <hr>
 <div>
 <a href="https://gall.dcinside.com/umamusu/2036494" target="_blank">뉴트랙 출주표 정리</a><br>
-<table class="preset_table">
+<table class="preset_table table table-bordered">
 <thead>
   <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
 </thead>
 <tbody>
-  <tr><td>삼관(중장) 루트          </td><td>O</td><td> </td><td> </td><td> </td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[0])"><br></td></tr>
-  <tr><td>삼관(마중장) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[1])"><br></td></tr>
-  <tr><td>삼관(마중장 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[2])"><br></td></tr>
-  <tr><td>티아라(마중) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td> </td><td>31</td><td>200</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[3])"><br></td></tr>
-  <tr><td>티아라(단마중) 루트      </td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td> </td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[4])"><br></td></tr>
-  <tr><td>티아라(마중 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[5])"><br></td></tr>
-  <tr><td>티아라(단마중 + 더트) 루트</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[6])"><br></td></tr>
-  <tr><td>단마 루트               </td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td> </td><td>33</td><td>180</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[7])"><br></td></tr>
-  <tr><td>단마+더트 루트           </td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td> </td><td>31</td><td>280</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[8])"><br></td></tr>
+  <tr><td>삼관(중장) 루트          </td><td>O</td><td> </td><td> </td><td> </td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[0])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>삼관(마중장) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[1])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>삼관(마중장 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[2])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>티아라(마중) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td> </td><td>31</td><td>200</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[3])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>티아라(단마중) 루트      </td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td> </td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[4])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>티아라(마중 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[5])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>티아라(단마중 + 더트) 루트</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[6])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>단마 루트               </td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td> </td><td>33</td><td>180</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[7])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>단마+더트 루트           </td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td> </td><td>31</td><td>280</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[8])" class="btn btn-primary btn-sm"><br></td></tr>
 </tbody>
 </table>
 </div>
@@ -147,28 +154,28 @@ My Presets
 <hr>
 <div>
 <a href="https://umamusumelabo.com/beginner/race-rotation-guide" target="_blank">umamusumelabo.com race-rotation-guide</a><br>
-<table class="preset_table">
+<table class="preset_table table table-bordered">
 <thead>
   <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
 </thead>
 <tbody>
-  <tr><td>마일 적성이 있는 중장거리 말딸</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[0])"><br></td></tr>
-  <tr><td>오구리캡</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[1])"><br></td></tr>
-  <tr><td>보드카</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[2])"><br></td></tr>
-  <tr><td>아그네스 디지털</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[3])"><br></td></tr>
-  <tr><td>마일 적성이 낮은 중장거리 말딸</td><td>O</td><td></td><td></td><td></td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[4])"><br></td></tr>
-  <tr><td>사쿠라 박신 오</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[5])"><br></td></tr>
-  <tr><td>타이키 셔틀</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[6])"><br></td></tr>
-  <tr><td>스마트 팔콘 잔디개조</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[7])"><br></td></tr>
+  <tr><td>마일 적성이 있는 중장거리 말딸</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[0])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>오구리캡</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[1])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>보드카</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[2])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>아그네스 디지털</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[3])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>마일 적성이 낮은 중장거리 말딸</td><td>O</td><td></td><td></td><td></td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[4])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>사쿠라 박신 오</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[5])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>타이키 셔틀</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[6])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>스마트 팔콘 잔디개조</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[7])" class="btn btn-primary btn-sm"><br></td></tr>
 </tbody>
 </table>
 </div>
 <hr>
 <div>
-<table class="preset_table">
+<table class="preset_table table table-bordered">
   <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
-  <tr><td>최소대회 PresetA</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>27</td><td>270</td><td><input type="button" value="import" onclick="load_preset(grass_base_preset_text)"><br></td></tr>
-  <tr><td>최소대회 PresetB</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>31</td><td>350</td><td><input type="button" value="import" onclick="load_preset(grass_dirt_base_preset_text)"><br></td></tr>
+  <tr><td>최소대회 PresetA</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>27</td><td>270</td><td><input type="button" value="import" onclick="load_preset(grass_base_preset_text)" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>최소대회 PresetB</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>31</td><td>350</td><td><input type="button" value="import" onclick="load_preset(grass_dirt_base_preset_text)" class="btn btn-primary btn-sm"><br></td></tr>
 </table>
 </div>
 </div>
@@ -177,8 +184,8 @@ My Presets
 <hr>
 <textarea id="json_area" cols="40" rows="5"></textarea>
 <div>
-<input type="button" value="export" onclick="export_text()">
-<input type="button" value="import" onclick="import_text()">
+<input type="button" value="export" onclick="export_text()" class="btn btn-primary">
+<input type="button" value="import" onclick="import_text()" class="btn btn-primary">
 </div>
 
 <p id="debug"></p>
@@ -416,6 +423,12 @@ function preset_move_down(index) {
   render_rotation_presets();
 }
 
+function add_bootstrap_small_btn_class(input_elem) {
+  input_elem.classList.add("btn");
+  input_elem.classList.add("btn-primary");
+  input_elem.classList.add("btn-sm");
+}
+
 function create_preset_elem(preset, index) {
   var tr = document.createElement("tr");
 
@@ -449,6 +462,7 @@ function create_preset_elem(preset, index) {
   var load_input = document.createElement("input");
   load_input.value = "load";
   load_input.type = "button";
+  add_bootstrap_small_btn_class(load_input);
 
   load_input.addEventListener("click", function() {
     load_preset(preset[4]);
@@ -458,6 +472,7 @@ function create_preset_elem(preset, index) {
   var save_input = document.createElement("input");
   save_input.value = "save";
   save_input.type = "button";
+  add_bootstrap_small_btn_class(save_input);
 
   save_input.addEventListener("click", function() {
     save_preset(index);
@@ -467,6 +482,7 @@ function create_preset_elem(preset, index) {
   var delete_input = document.createElement("input");
   delete_input.value = "delete";
   delete_input.type = "button";
+  add_bootstrap_small_btn_class(delete_input);
 
   delete_input.addEventListener("click", function() {
     delete_preset(index);
