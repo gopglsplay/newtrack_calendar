@@ -25,6 +25,10 @@ table {
   margin-bottom: 8px;
 }
 
+.title_div {
+  min-width:220px;
+}
+
 td,th {
   text-align: center;
 }
