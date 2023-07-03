@@ -51,8 +51,8 @@
 <td><input id="long" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="long">장거리</label></td>
 </tr>
 <tr>
-<td><input id="op" type="checkbox" checked="" onclick="clear_selector()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="op">Op</label></td>
-<td><input id="pre_op" type="checkbox" checked="" onclick="clear_selector()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="pre_op">Pre-Op</label></td>
+<td><input id="op" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="op">Op</label></td>
+<td><input id="pre_op" type="checkbox" checked="" onclick="update_checkbox_class_all()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="pre_op">Pre-Op</label></td>
 <td><input id="show_diff" type="checkbox" checked="" onclick="change_show_diff()" class="btn-check"><label class="btn btn-outline-primary btn-sm" for="show_diff">Diff</label></td>
 </tr>
 </table>
@@ -339,10 +339,26 @@ function update_checkbox_class_all() {
 
   for (var date_id of window.race_manager.date_id_list) {
     var race_id = window.rotation.get_race_id(date_id);
+    var img = $('#'+date_id + " .race_img")[0];
     if (race_id != -1) {
       var race = window.race_manager.get_race(race_id);
-      img = $('#'+date_id + " .race_img")[0];
       decorate_race_image(img, race);
+    } else {
+      img.classList.remove("mosaic");
+      var empty = true;
+      var op = $('input:checkbox[id="op"]').is(":checked");
+      var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
+      if (date_id in window.race_manager.date_id_to_race_ids) {
+        for (const race_id of window.race_manager.date_id_to_race_ids[date_id]) {
+          var race = window.race_manager.get_race(race_id);
+          if (race.grade == 'OP' && !op) continue;
+          if (race.grade == 'Pre-OP' && !pre_op) continue;
+          if (check_mosaic(race)) continue;
+          console.log(date_id + ": " + race.name);
+          empty = false;
+        }
+      }
+      if (empty) img.classList.add("mosaic");
     }
   }
 }
@@ -582,7 +598,23 @@ function render_calendar_race(date_id, race) {
         div.classList.add("minus");
       }
     }
+  } else {
+    var empty = true;
+    var op = $('input:checkbox[id="op"]').is(":checked");
+    var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
+    if (date_id in window.race_manager.date_id_to_race_ids) {
+      for (const race_id of window.race_manager.date_id_to_race_ids[date_id]) {
+        var race = window.race_manager.get_race(race_id);
+        if (race.grade == 'OP' && !op) continue;
+        if (race.grade == 'Pre-OP' && !pre_op) continue;
+        if (check_mosaic(race)) continue;
+        console.log(date_id + ": " + race.name);
+        empty = false;
+      }
+    }
+    if (empty) img.classList.add("mosaic");
   }
+
 }
 
 function draw_race(date_id) {
@@ -620,7 +652,6 @@ function select_race(date_id, race) {
 
 function add_choice(race) {
   var selector = $("#selector")[0];
-
   var wrapper = document.createElement("div");
 
   var img = document.createElement("img");
@@ -663,6 +694,7 @@ function add_choice(race) {
 
 function update_selector() {
   clear_selector();
+  var empty = true;
   var op = $('input:checkbox[id="op"]').is(":checked");
   var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
   if (selected_date_id in window.race_manager.date_id_to_race_ids) {
@@ -672,9 +704,11 @@ function update_selector() {
       if (race.grade == 'Pre-OP' && !pre_op) continue;
       // if (check_mosaic(race)) continue;
       add_choice(race);
+      empty = false;
     }
   }
-  add_choice(null);
+
+  if (!empty || window.rotation.get_race_id(selected_date_id) != -1) add_choice(null);
 }
 
 function get_click_event(col) {
