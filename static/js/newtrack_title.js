@@ -162,20 +162,6 @@ class HeroineUma extends RaceListTitle {
   }
 }
 
-
-class SpringUma extends RaceListTitle {
-  constructor() {
-    super("봄의 패자", ["오사카배", "텐노상 (봄)", "타카라즈카 기념"], 3, "silver", "", 20);
-  }
-}
-
-
-class FallUma extends RaceListTitle {
-  constructor() {
-    super("가을의 패자", ["텐노상 (가을)", "재팬컵", "아리마 기념"], 3, "silver", "", 20);
-  }
-}
-
 class ListUma extends ListCondition {
   constructor(name, conditions, threshold, color, skill_bonus, stat_bonus) {
     super(conditions, threshold, "");
@@ -184,6 +170,23 @@ class ListUma extends ListCondition {
   }
   repr(rotation, show_stat=false) {
     return this.title_property.title_repr(this.name, this.prog(rotation), show_stat);
+  }
+}
+
+
+class SpringUma extends RaceListTitle {
+  constructor() {
+    super("봄의 패자", ["오사카배", "텐노상 (봄)", "타카라즈카 기념"], 3, "silver", "", 20);
+  }
+}
+
+
+class FallUma extends ListUma {
+  constructor() {
+    super("가을의 패자", [
+      new ListCondition([new ClassicRaceCondition("텐노상 (가을)"), new ClassicRaceCondition("재팬컵"), new ClassicRaceCondition("아리마 기념")], 3, "클래식 가을 패자"),
+      new ListCondition([new SeniorRaceCondition("텐노상 (가을)"), new SeniorRaceCondition("재팬컵"), new SeniorRaceCondition("아리마 기념")], 3, "시니어 가을 패자")
+    ], 1, "silver", "", 20);
   }
 }
 
