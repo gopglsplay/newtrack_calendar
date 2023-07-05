@@ -37,7 +37,7 @@
 <table class="layout_table">
 <tr>
 <td>
-<table class="top_table">
+<table class="top_table"><tr>
 <td style="text-align:left;">
 <table id="checkboxes">
 <tr>
@@ -64,6 +64,7 @@
     </table>
 </td>
     <td><input type="button" value="clear all" onclick="clear_rotation()" class="btn btn-primary btn-sm clear-btn"></td>
+</tr>
 </table>
 </td>
 <td id="reward_list"></td></tr>
@@ -124,7 +125,7 @@
 My Presets
 <table class="preset_table table table-bordered">
 <thead>
-  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th><th></th></tr>
+  <tr><th class="auto_th"></th><th class="auto_th">이름</th><th class="auto_th"></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th class="auto_th"></th></tr>
 </thead>
 <tbody id="my_rotation_presets">
 </tbody>
@@ -134,20 +135,20 @@ My Presets
 <hr>
 <div>
 <a href="https://gall.dcinside.com/umamusu/2036494" target="_blank">뉴트랙 출주표 정리</a><br>
-<table class="preset_table table table-bordered">
+<table class="const_preset_table table table-bordered">
 <thead>
-  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
+  <tr><th class="auto_th">이름</th><th class="auto_th"></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
 </thead>
 <tbody>
-  <tr><td>삼관(중장) 루트          </td><td>O</td><td> </td><td> </td><td> </td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[0])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>삼관(마중장) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[1])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>삼관(마중장 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[2])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>티아라(마중) 루트        </td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td> </td><td>31</td><td>200</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[3])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>티아라(단마중) 루트      </td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td> </td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[4])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>티아라(마중 + 더트) 루트  </td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[5])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>티아라(단마중 + 더트) 루트</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[6])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>단마 루트               </td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td> </td><td>33</td><td>180</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[7])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>단마+더트 루트           </td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td> </td><td>31</td><td>280</td><td><input type="button" value="import" onclick="load_preset(gall_deep_presets[8])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>삼관(중장) 루트          </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[0])"><i class="bi bi-upload"></i></div></td><td>O</td><td> </td><td> </td><td> </td><td>O</td><td>O</td><td>29</td><td>220</td></tr>
+  <tr><td>삼관(마중장) 루트        </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[1])"><i class="bi bi-upload"></i></div></td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td></tr>
+  <tr><td>삼관(마중장 + 더트) 루트  </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[2])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td></tr>
+  <tr><td>티아라(마중) 루트        </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[3])"><i class="bi bi-upload"></i></div></td><td>O</td><td> </td><td> </td><td>O</td><td>O</td><td> </td><td>31</td><td>200</td></tr>
+  <tr><td>티아라(단마중) 루트      </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[4])"><i class="bi bi-upload"></i></div></td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td> </td><td>33</td><td>260</td></tr>
+  <tr><td>티아라(마중 + 더트) 루트  </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[5])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td>32</td><td>240</td></tr>
+  <tr><td>티아라(단마중 + 더트) 루트</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[6])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td>32</td><td>310</td></tr>
+  <tr><td>단마 루트               </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[7])"><i class="bi bi-upload"></i></div></td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td> </td><td>33</td><td>180</td></tr>
+  <tr><td>단마+더트 루트           </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(gall_deep_presets[8])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td> </td><td>31</td><td>280</td></tr>
 </tbody>
 </table>
 </div>
@@ -155,28 +156,28 @@ My Presets
 <hr>
 <div>
 <a href="https://umamusumelabo.com/beginner/race-rotation-guide" target="_blank">umamusumelabo.com race-rotation-guide</a><br>
-<table class="preset_table table table-bordered">
+<table class="const_preset_table table table-bordered">
 <thead>
-  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
+  <tr><th class="auto_th">이름</th><th class="auto_th"></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
 </thead>
 <tbody>
-  <tr><td>마일 적성이 있는 중장거리 말딸</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[0])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>오구리캡</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[1])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>보드카</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[2])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>아그네스 디지털</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>240</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[3])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>마일 적성이 낮은 중장거리 말딸</td><td>O</td><td></td><td></td><td></td><td>O</td><td>O</td><td>29</td><td>220</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[4])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>사쿠라 박신 오</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[5])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>타이키 셔틀</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[6])" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>스마트 팔콘 잔디개조</td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td><td><input type="button" value="import" onclick="load_preset(umamusumelabo_presets[7])" class="btn btn-primary btn-sm"><br></td></tr>
+  <tr><td>마일 적성이 있는 중장거리 말딸</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[0])"><i class="bi bi-upload"></i></div></td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>33</td><td>260</td></tr>
+  <tr><td>오구리캡</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[1])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>34</td><td>350</td></tr>
+  <tr><td>보드카</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[2])"><i class="bi bi-upload"></i></div></td><td>O</td><td></td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>200</td></tr>
+  <tr><td>아그네스 디지털</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[3])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td></td><td>32</td><td>240</td></tr>
+  <tr><td>마일 적성이 낮은 중장거리 말딸</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[4])"><i class="bi bi-upload"></i></div></td><td>O</td><td></td><td></td><td></td><td>O</td><td>O</td><td>29</td><td>220</td></tr>
+  <tr><td>사쿠라 박신 오</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[5])"><i class="bi bi-upload"></i></div></td><td>O</td><td></td><td>O</td><td>O</td><td></td><td></td><td>34</td><td>180</td></tr>
+  <tr><td>타이키 셔틀</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[6])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td></td><td>32</td><td>280</td></tr>
+  <tr><td>스마트 팔콘 잔디개조</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(umamusumelabo_presets[7])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td>O</td><td>O</td><td>O</td><td></td><td>32</td><td>310</td></tr>
 </tbody>
 </table>
 </div>
 <hr>
 <div>
-<table class="preset_table table table-bordered">
-  <tr><th></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th><th></th></tr>
-  <tr><td>최소대회 PresetA</td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>27</td><td>270</td><td><input type="button" value="import" onclick="load_preset(grass_base_preset_text)" class="btn btn-primary btn-sm"><br></td></tr>
-  <tr><td>최소대회 PresetB</td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>31</td><td>350</td><td><input type="button" value="import" onclick="load_preset(grass_dirt_base_preset_text)" class="btn btn-primary btn-sm"><br></td></tr>
+<table class="const_preset_table table table-bordered">
+  <tr><th class="auto_th">이름</th><th class="auto_th"></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
+  <tr><td>최소대회 PresetA</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(grass_base_preset_text)"><i class="bi bi-upload"></i></div></td><td>O</td><td></td><td></td><td>O</td><td>O</td><td>O</td><td>27</td><td>270</td></tr>
+  <tr><td>최소대회 PresetB</td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(grass_dirt_base_preset_text)"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td></td><td>O</td><td>O</td><td>O</td><td>31</td><td>350</td></tr>
 </table>
 </div>
 </div>
@@ -432,7 +433,6 @@ function delete_preset(index) {
 }
 
 function preset_move_up(index) {
-  console.log("move up");
   if (index == 0) return;
   presets = get_local_presets();
 
@@ -442,12 +442,20 @@ function preset_move_up(index) {
 }
 
 function preset_move_down(index) {
-  console.log("move down");
   presets = get_local_presets();
   if (index+1 == presets.length) return;
   [presets[index+1], presets[index]] = [presets[index], presets[index+1]];
   save_local_presets(presets);
   render_rotation_presets();
+}
+
+function preset_move_to(index, to) {
+  presets = get_local_presets();
+  if (index == to) return;
+  var preset = presets[index];
+  presets.splice(index, 1);
+  presets.splice(to, 0, preset);
+  save_local_presets(presets);
 }
 
 function add_bootstrap_small_btn_class(input_elem) {
@@ -465,6 +473,47 @@ function create_icon_element(name) {
 
 function create_preset_elem(preset, index, disable_up=False, disable_down=False) {
   var tr = document.createElement("tr");
+  tr.addEventListener("dragover", function(e) {
+    var tbody = $("#my_rotation_presets")[0];
+
+    var on_index = index;
+    if (index == current_drag_index) on_index = current_on_index;
+    else {
+      if (on_index > current_drag_index) on_index --;
+      if (on_index >= current_on_index) on_index ++;
+    }
+
+    var drag_index = index;
+
+    if (current_on_index < on_index) {
+      if (drag_index == preset_elements.length - 1) {
+        tbody.appendChild(preset_elements[current_drag_index]);
+      } else {
+        drag_index ++;
+        if (drag_index == current_drag_index) drag_index++;
+        tbody.insertBefore(preset_elements[current_drag_index], preset_elements[drag_index]);
+      }
+    } else if (current_on_index > on_index) {
+      tbody.insertBefore(preset_elements[current_drag_index], preset_elements[drag_index]);
+    }
+    current_on_index = on_index;
+    e.preventDefault();
+  });
+
+  var up_down_td = document.createElement("td");
+  up_down_td.classList.add("arrow_td");
+  up_down_td.appendChild(create_icon_element("three-dots-vertical"));
+  up_down_td.setAttribute("draggable", true);
+  up_down_td.addEventListener("dragstart", function(e) {
+    current_drag_index = index;
+    current_on_index = index;
+  });
+  up_down_td.addEventListener("dragend", function(e) {
+    preset_move_to(current_drag_index, current_on_index);
+    render_rotation_presets();
+  });
+  tr.appendChild(up_down_td);
+
 
   var title_td = document.createElement("td");
   title_td.innerText = preset[0];
@@ -476,6 +525,19 @@ function create_preset_elem(preset, index, disable_up=False, disable_down=False)
   }, false);
 
   tr.appendChild(title_td);
+
+  var load_td = document.createElement("td");
+  var load_div = document.createElement("div");
+  load_div.classList.add("div_btn");
+  load_div.classList.add("round");
+  load_div.appendChild(create_icon_element("upload"));
+  add_bootstrap_small_btn_class(load_div);
+
+  load_div.addEventListener("click", function() {
+    load_preset(preset[4]);
+  });
+  load_td.appendChild(load_div);
+  tr.appendChild(load_td);
 
   for (const red of ["잔디", "더트", "단거리", "마일", "중거리", "장거리"]) {
     var red_td = document.createElement("td");
@@ -489,33 +551,7 @@ function create_preset_elem(preset, index, disable_up=False, disable_down=False)
   stat_td.innerText = preset[3];
   tr.appendChild(stat_td);
 
-  var button_td = document.createElement("td");
-
-  var button_div = document.createElement("div");
-  button_div.classList.add("button_div");
-
-  var load_div = document.createElement("div");
-  load_div.classList.add("div_btn");
-  load_div.classList.add("round");
-  load_div.appendChild(create_icon_element("upload"));
-  add_bootstrap_small_btn_class(load_div);
-
-  load_div.addEventListener("click", function() {
-    load_preset(preset[4]);
-  });
-  button_div.appendChild(load_div);
-
-  var save_div = document.createElement("div");
-  save_div.classList.add("div_btn");
-  save_div.classList.add("round");
-  save_div.appendChild(create_icon_element("save"));
-  add_bootstrap_small_btn_class(save_div);
-
-  save_div.addEventListener("click", function() {
-    save_preset(index);
-  });
-  button_div.appendChild(save_div);
-
+  var delete_td = document.createElement("td");
   var delete_div = document.createElement("div");
   delete_div.classList.add("div_btn");
   delete_div.classList.add("round");
@@ -525,53 +561,23 @@ function create_preset_elem(preset, index, disable_up=False, disable_down=False)
   delete_div.addEventListener("click", function() {
     delete_preset(index);
   });
-  button_div.appendChild(delete_div);
-
-  button_td.appendChild(button_div);
-  tr.appendChild(button_td);
-
-  var up_down_td = document.createElement("td");
-  up_down_td.classList.add("arrow_td");
-
-  var ud_button_div = document.createElement("div");
-  ud_button_div.classList.add("button_div");
-
-  var up_div = document.createElement("div");
-  up_div.classList.add("div_btn");
-  up_div.classList.add("round");
-  if (disable_up) up_div.classList.add("disable_btn");
-  up_div.appendChild(create_icon_element("arrow-up"));
-  add_bootstrap_small_btn_class(up_div);
-
-  up_div.addEventListener("click", function() {
-    preset_move_up(index);
-  });
-  ud_button_div.appendChild(up_div);
-
-  var down_div = document.createElement("div");
-  down_div.classList.add("div_btn");
-  down_div.classList.add("round");
-  if (disable_down) down_div.classList.add("disable_btn");
-  down_div.appendChild(create_icon_element("arrow-down"));
-  add_bootstrap_small_btn_class(down_div);
-
-  down_div.addEventListener("click", function() {
-    preset_move_down(index);
-  });
-  ud_button_div.appendChild(down_div);
-  up_down_td.appendChild(ud_button_div);
-  tr.appendChild(up_down_td);
+  delete_td.appendChild(delete_div);
+  tr.appendChild(delete_td);
 
   return tr;
 }
 
+preset_elements = [];
 function render_rotation_presets() {
   var tbody = $("#my_rotation_presets")[0];
   tbody.innerHTML = "";
 
   presets = get_local_presets();
+  preset_elements = [];
   for (const [index, preset] of presets.entries()) {
-    tbody.appendChild(create_preset_elem(preset, index, index==0, index==(presets.length - 1)));
+    var preset_elem = create_preset_elem(preset, index, index==0, index==(presets.length - 1));
+    preset_elements.push(preset_elem);
+    tbody.appendChild(preset_elem);
   }
 }
 
@@ -608,7 +614,6 @@ function render_calendar_race(date_id, race) {
         if (race.grade == 'OP' && !op) continue;
         if (race.grade == 'Pre-OP' && !pre_op) continue;
         if (check_mosaic(race)) continue;
-        console.log(date_id + ": " + race.name);
         empty = false;
       }
     }
@@ -847,7 +852,7 @@ function load_preset(preset_text) {
 }
 
 grass_base_preset_text = 'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOi0xLCJKXzExX0EiOjQ0LCJKXzExX0IiOi0xLCJKXzEyX0EiOjEsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjotMSwiQ18yX0IiOi0xLCJDXzNfQSI6LTEsIkNfM19CIjotMSwiQ180X0EiOjQsIkNfNF9CIjotMSwiQ181X0EiOjUsIkNfNV9CIjo3LCJDXzZfQSI6LTEsIkNfNl9CIjo5LCJDXzdfQSI6LTEsIkNfN19CIjotMSwiQ184X0EiOi0xLCJDXzhfQiI6LTEsIkNfOV9BIjoxMjksIkNfOV9CIjotMSwiQ18xMF9BIjotMSwiQ18xMF9CIjoxNCwiQ18xMV9BIjoxNSwiQ18xMV9CIjoxOSwiQ18xMl9BIjotMSwiQ18xMl9CIjoyMiwiU18xX0EiOi0xLCJTXzFfQiI6NjksIlNfMl9BIjotMSwiU18yX0IiOi0xLCJTXzNfQSI6LTEsIlNfM19CIjoyNiwiU180X0EiOi0xLCJTXzRfQiI6MjcsIlNfNV9BIjoyOCwiU181X0IiOi0xLCJTXzZfQSI6MjksIlNfNl9CIjozMCwiU183X0EiOi0xLCJTXzdfQiI6LTEsIlNfOF9BIjotMSwiU184X0IiOi0xLCJTXzlfQSI6MTc1LCJTXzlfQiI6ODEsIlNfMTBfQSI6LTEsIlNfMTBfQiI6MzMsIlNfMTFfQSI6MzQsIlNfMTFfQiI6MzksIlNfMTJfQSI6LTEsIlNfMTJfQiI6NDF9';
-grass_dirt_base_preset_text = 'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOi0xLCJKXzExX0EiOjQ0LCJKXzExX0IiOi0xLCJKXzEyX0EiOjEsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOi0xLCJDXzNfQiI6NDgsIkNfNF9BIjo0LCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NywiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6MTI5LCJDXzlfQiI6NTcsIkNfMTBfQSI6LTEsIkNfMTBfQiI6MTQsIkNfMTFfQSI6MTYsIkNfMTFfQiI6MjAsIkNfMTJfQSI6LTEsIkNfMTJfQiI6MjMsIlNfMV9BIjotMSwiU18xX0IiOjY5LCJTXzJfQSI6LTEsIlNfMl9CIjoyNCwiU18zX0EiOi0xLCJTXzNfQiI6MjYsIlNfNF9BIjotMSwiU180X0IiOjI3LCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MzEsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjgxLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM3LCJTXzExX0IiOjM4LCJTXzEyX0EiOi0xLCJTXzEyX0IiOjQxfQ==';
+grass_dirt_base_preset_text = 'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOi0xLCJKXzExX0EiOjQ0LCJKXzExX0IiOi0xLCJKXzEyX0EiOjEsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOi0xLCJDXzNfQiI6NDgsIkNfNF9BIjo0LCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NywiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOjEwLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6MTI5LCJDXzlfQiI6NTcsIkNfMTBfQSI6LTEsIkNfMTBfQiI6MTQsIkNfMTFfQSI6MTYsIkNfMTFfQiI6MTksIkNfMTJfQSI6LTEsIkNfMTJfQiI6MjIsIlNfMV9BIjotMSwiU18xX0IiOi0xLCJTXzJfQSI6LTEsIlNfMl9CIjoyNCwiU18zX0EiOi0xLCJTXzNfQiI6MjYsIlNfNF9BIjotMSwiU180X0IiOjI3LCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MzEsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjgxLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM3LCJTXzExX0IiOjM5LCJTXzEyX0EiOi0xLCJTXzEyX0IiOjQxfQ==';
 
 gall_deep_presets = [
   'eyJKXzlfQiI6MTk1LCJKXzEwX0EiOjIwMCwiSl8xMV9CIjo5OCwiSl8xMl9CIjoyLCJDXzFfQSI6MTAxLCJDXzJfQiI6MjMzLCJDXzNfQSI6NDUsIkNfNF9BIjo0LCJDXzRfQiI6NTEsIkNfNV9CIjo3LCJDXzZfQiI6OSwiQ185X0EiOjEyOSwiQ185X0IiOjU4LCJDXzEwX0IiOjE0LCJDXzExX0EiOjE1LCJDXzExX0IiOjIwLCJDXzEyX0IiOjIyLCJTXzFfQiI6NjksIlNfMl9BIjo3MCwiU18zX0IiOjI2LCJTXzRfQiI6MjcsIlNfNl9CIjozMCwiU181X0EiOjE1NywiU185X0EiOjE3NSwiU185X0IiOjgxLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM0LCJTXzExX0IiOjM5LCJTXzEyX0IiOjQxfQ==',

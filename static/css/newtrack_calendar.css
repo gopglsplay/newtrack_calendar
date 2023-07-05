@@ -130,11 +130,15 @@ body,div,body ul,li{margin:0; padding:0;}
   pointer-events: none;
 }
 
-.preset_table td+td, .preset_table th+th, .stat_table td, .stat_table th {
+.preset_table th, .stat_table th, .const_preset_table th {
   width: 65px;
 }
 
-.preset_table td:first-child {
+.preset_table th.auto_th, .const_preset_table th.auto_th {
+  width: auto;
+}
+
+.preset_table td:first-child+td, .const_preset_table td:first-child {
   padding-left: 10px;
   padding-right: 10px;
 }
