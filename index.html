@@ -458,9 +458,9 @@ function preset_move_to(index, to) {
   save_local_presets(presets);
 }
 
-function add_bootstrap_small_btn_class(input_elem) {
+function add_bootstrap_small_btn_class(input_elem, color="primary") {
   input_elem.classList.add("btn");
-  input_elem.classList.add("btn-primary");
+  input_elem.classList.add("btn-" + color);
   input_elem.classList.add("btn-sm");
 }
 
@@ -556,7 +556,7 @@ function create_preset_elem(preset, index, disable_up=False, disable_down=False)
   delete_div.classList.add("div_btn");
   delete_div.classList.add("round");
   delete_div.appendChild(create_icon_element("trash"));
-  add_bootstrap_small_btn_class(delete_div);
+  add_bootstrap_small_btn_class(delete_div, "danger");
 
   delete_div.addEventListener("click", function() {
     delete_preset(index);
