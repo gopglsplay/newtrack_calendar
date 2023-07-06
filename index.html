@@ -117,6 +117,16 @@
 </tr>
 <tr>
     <td>
+Shortcuts
+<div>
+<input type="button" value="클래식3관" onclick="select_race_by_dict({'C_4_A': 4, 'C_10_B': 14, 'C_5_B': 7})" class="btn btn-primary btn-sm">
+<input type="button" value="티아라" onclick="select_race_by_dict({'C_4_A': 3, 'C_5_B': 6, 'C_10_B': 13})" class="btn btn-primary btn-sm">
+<input type="button" value="가을의 패자(시니어)" onclick="select_race_by_dict({'S_12_B': 41, 'S_11_B': 39, 'S_10_B': 33})" class="btn btn-primary btn-sm">
+<input type="button" value="더트 스프린터" onclick="select_race_by_dict({'C_11_A': 17, 'S_11_A': 36})" class="btn btn-primary btn-sm">
+<input type="button" value="더트의 신성" onclick="select_race_by_dict({'C_6_B': 114, 'C_8_A': 126, 'C_7_A': 10})" class="btn btn-primary btn-sm">
+</div>
+        <br>
+(데뷔전, 클라이맥스 포함 안됨)<br>
 <table class="stat_table table table-bordered">
 <thead>
   <tr><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
@@ -274,7 +284,7 @@ function update_computed_stat() {
   computed_stat_td.innerText = "";
   var race_bonus = (100 + parseInt($('#race_bonus')[0].value)) / 100;
   var exp_div = document.createElement("div");
-  exp_div.innerText = "(데뷔전/TS/칭호 포함)";
+  exp_div.innerText = "(데뷔전/클라이맥스/칭호 포함)";
   computed_stat_td.appendChild(exp_div);
 
   var count_stat = {
@@ -642,7 +652,7 @@ function update_skill_info(wrapper, race) {
       skill_div.classList.add("bi");
       skill_div.classList.add("bi-circle");
       if (mark == "double") {
-        console.log(race.name);
+        // console.log(race.name);
         extra_div.classList.add("extra_info");
         extra_div.classList.add("bi");
         extra_div.classList.add("bi-record");
@@ -717,15 +727,28 @@ function clear_selector() {
   selector.innerText = '';
 }
 
-function select_race(date_id, race) {
-  window.rotation.select(date_id, (race != null) ? race.id : -1);
-  draw_race(date_id);
+function select_race_by_dict(date_id_to_race_id) {
+  // console.log(date_id_to_race_id);
+  for (const [date_id, race_id] of Object.entries(date_id_to_race_id)) {
+    window.rotation.select(date_id, race_id);
+    draw_race(date_id);
+  }
   update_titles();
 
   var show_diff = $('input:checkbox[id="show_diff"]').is(":checked");
   if (show_diff) {
     draw_races();
   }
+}
+
+function select_race_id(date_id, race_id) {
+  var input_dict = {};
+  input_dict[date_id] = race_id;
+  select_race_by_dict(input_dict);
+}
+
+function select_race(date_id, race) {
+  select_race_id(date_id, (race != null) ? race.id : -1);
 }
 
 function add_choice(race) {
