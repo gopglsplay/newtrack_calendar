@@ -367,7 +367,7 @@ function update_checkbox_class_all() {
       var race = window.race_manager.get_race(race_id);
       decorate_race_image(img, race);
     } else {
-      img.classList.remove("mosaic");
+      img.classList.remove("empty");
       var empty = true;
       var op = $('input:checkbox[id="op"]').is(":checked");
       var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
@@ -381,7 +381,7 @@ function update_checkbox_class_all() {
           empty = false;
         }
       }
-      if (empty) img.classList.add("mosaic");
+      if (empty) img.classList.add("empty");
     }
   }
 }
@@ -665,7 +665,7 @@ function render_calendar_race(date_id, race) {
   var div = $('#'+date_id + " .race_img ~ div")[0];
   div.className = "";
   div.innerText = "";
-  if(race != null) {
+  if (race != null) {
     var show_diff = $('input:checkbox[id="show_diff"]').is(":checked");
     if (show_diff) {
       var diff = stat_bonus_when_remove(date_id) - get_title_rewards(window.rotation)[0];
@@ -687,7 +687,7 @@ function render_calendar_race(date_id, race) {
         empty = false;
       }
     }
-    if (empty) img.classList.add("mosaic");
+    if (empty) img.classList.add("empty");
   }
 
   update_skill_info($('#'+date_id)[0], race);
