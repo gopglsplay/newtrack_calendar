@@ -339,6 +339,7 @@ function check_mosaic(race) {
 
 function decorate_race_image(img, race) {
   img.classList.remove("mosaic");
+  img.classList.remove("empty");
   if (race == null) {
     img.title = "";
     return;
@@ -367,6 +368,7 @@ function update_checkbox_class_all() {
       var race = window.race_manager.get_race(race_id);
       decorate_race_image(img, race);
     } else {
+      img.classList.remove("mosaic");
       img.classList.remove("empty");
       var empty = true;
       var op = $('input:checkbox[id="op"]').is(":checked");
