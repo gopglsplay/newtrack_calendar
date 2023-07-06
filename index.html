@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="./static/js/newtrack_race.js"></script>
     <script src="./static/js/newtrack_title.js"></script>
+    <script src="./static/js/newtrack_skills.js"></script>
 
     <script>
         $(function(){
@@ -64,6 +65,22 @@
     </table>
 </td>
     <td><input type="button" value="clear all" onclick="clear_rotation()" class="btn btn-primary btn-sm clear-btn"></td>
+    <td>
+        <table>
+            <tr><td class="text-center">
+        <i class="bi bi-circle"></i>
+        <i class="bi bi-triangle"></i>
+        <i class="bi bi-x-lg"></i>
+                </td></tr>
+            <tr><td>
+        <select id="skill" class="form-select" onchange="change_skill()">
+            <option value="">스킬</option>
+            <option value="angling">앵글링</option>
+            <option value="straight">직선 주파</option>
+        </select>
+            </td></tr>
+            </table>
+    </td>
 </tr>
 </table>
 </td>
@@ -335,6 +352,11 @@ function change_show_diff() {
   draw_races();
 }
 
+function change_skill() {
+  update_checkbox_class_all();
+  draw_races();
+}
+
 function update_checkbox_class_all() {
   clear_selector();
 
@@ -355,7 +377,7 @@ function update_checkbox_class_all() {
           if (race.grade == 'OP' && !op) continue;
           if (race.grade == 'Pre-OP' && !pre_op) continue;
           if (check_mosaic(race)) continue;
-          console.log(date_id + ": " + race.name);
+          // console.log(date_id + ": " + race.name);
           empty = false;
         }
       }
@@ -587,6 +609,54 @@ function get_thumb_link(race) {
   return race.thumb_link;
 }
 
+function update_skill_info(wrapper, race) {
+  var skill_div = wrapper.querySelector("div:nth-last-child(2)");
+  var extra_div = wrapper.querySelector("div:last-child");
+  var skill_selected = $("#skill")[0].value;
+
+  var mark = 'none';
+  if (race != null) {
+    var race_repr = race.location + " " + race.track + race.distance + "m";
+    // console.log(race_repr);
+    if (skill_selected == 'angling') {
+      mark = angling[race_repr];
+    } else if (skill_selected == 'straight') {
+      mark = straight[race_repr];
+    }
+  }
+
+  skill_div.className = "";
+  extra_div.className = "";
+  if (skill_selected != "" && race != null){
+    skill_div.classList.add("skill_info");
+    skill_div.classList.add(mark);
+    if (mark == "x" || mark == "none") {
+      skill_div.classList.add("bi");
+      skill_div.classList.add("bi-x-lg");
+    } else if (mark == "triangle") {
+      skill_div.classList.add("bi");
+      skill_div.classList.add("bi-triangle");
+    } else if (mark == "single" || mark == "double") {
+      skill_div.classList.add("bi");
+      skill_div.classList.add("bi-circle");
+      if (mark == "double") {
+        console.log(race.name);
+        extra_div.classList.add("extra_info");
+        extra_div.classList.add("bi");
+        extra_div.classList.add("bi-record");
+      }
+    }
+  }
+}
+
+function add_skill_info(wrapper, race) {
+  var div1 = document.createElement("div");
+  wrapper.appendChild(div1);
+  var div2 = document.createElement("div");
+  wrapper.appendChild(div2);
+  update_skill_info(wrapper, race);
+}
+
 function render_calendar_race(date_id, race) {
   var img = $('#'+date_id + " .race_img")[0];
   img.src = get_thumb_link(race);
@@ -610,16 +680,17 @@ function render_calendar_race(date_id, race) {
     var pre_op = $('input:checkbox[id="pre_op"]').is(":checked");
     if (date_id in window.race_manager.date_id_to_race_ids) {
       for (const race_id of window.race_manager.date_id_to_race_ids[date_id]) {
-        var race = window.race_manager.get_race(race_id);
-        if (race.grade == 'OP' && !op) continue;
-        if (race.grade == 'Pre-OP' && !pre_op) continue;
-        if (check_mosaic(race)) continue;
+        var race_candidate = window.race_manager.get_race(race_id);
+        if (race_candidate.grade == 'OP' && !op) continue;
+        if (race_candidate.grade == 'Pre-OP' && !pre_op) continue;
+        if (check_mosaic(race_candidate)) continue;
         empty = false;
       }
     }
     if (empty) img.classList.add("mosaic");
   }
 
+  update_skill_info($('#'+date_id)[0], race);
 }
 
 function draw_race(date_id) {
@@ -692,6 +763,8 @@ function add_choice(race) {
       div.classList.add("plus");
     }
   }
+
+  add_skill_info(wrapper, race);
 
   wrapper.appendChild(div);
   selector.appendChild(wrapper);
@@ -832,6 +905,7 @@ window.race_manager_ready = function() {
         col.appendChild(text);
         var div = document.createElement("div");
         col.appendChild(div);
+        add_skill_info(col);
       };
       add_img(col, row);
       row.appendChild(col);

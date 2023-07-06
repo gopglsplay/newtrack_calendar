@@ -297,3 +297,55 @@ body .table {
   border-color: lightgray;
 }
 
+#skill {
+  font-size: 12px;
+}
+
+div.x {
+}
+
+div.single {
+}
+
+div.double {
+}
+
+div.triangle {
+}
+
+div.skill_info {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  font-size: 12px;
+  height: 22px;
+  width: 22px;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  pointer-events: none;
+  -webkit-text-stroke-width: 0.5px;
+}
+
+div.extra_info {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  font-size: 12px;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  pointer-events: none;
+  -webkit-text-stroke-width: 0.5px;
+}
+
+.tabcontent td div.bi::before, #selector div.bi::before {
+  vertical-align: middle;
+}
+
+.text-center {
+  text-align: center;
+}

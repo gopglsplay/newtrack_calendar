@@ -254,7 +254,7 @@ class FilterTitle extends CountTitle {
 
 class G123LocationFilterTitle extends FilterTitle {
   constructor(name, threshold, color, skill_bonus, stat_bonus, locations) {
-    super(name, threshold, color, skill_bonus, stat_bonus, location_filter_gen_g123(locations), locations.join(", "))
+    super(name, threshold, color, skill_bonus, stat_bonus, location_filter_gen_g123(locations), locations.join(", ") + " 중상 레이스")
   }
 }
 
@@ -367,5 +367,5 @@ window.Titles = [
   new G123LocationFilterTitle("토호쿠 마스터", 3, "bronze", "", 10, ["후쿠시마", "니이가타", "모리오카"]),
   new G123LocationFilterTitle("칸토 마스터", 3, "bronze", "", 10, ["도쿄", "나카야마", "오이", "카와사키", "후나바시"]),
   new G123LocationFilterTitle("서일본 마스터", 3, "bronze", "", 10, ["츄쿄", "한신", "교토"]),
-  new G123LocationFilterTitle("코쿠라 마스터", 3, "bronze", "", 10, ["코쿠라"]),
+  new G123LocationFilterTitle("코쿠라 마스터", 2, "bronze", "", 10, ["코쿠라"]),
 ];
