@@ -161,6 +161,20 @@ My Presets
 <input type="button" value="save new" onclick="save_new()" class="btn btn-primary">
 <hr>
 <div>
+더트 패치 루트<br>
+<table class="const_preset_table table table-bordered">
+<thead>
+  <tr><th class="auto_th">이름</th><th class="auto_th"></th><th>잔디</th><th>더트</th><th>단거리</th><th>마일</th><th>중거리</th><th>장거리</th><th>출전수</th><th>스탯</th></tr>
+</thead>
+<tbody>
+  <tr><td>삼관(마중장 + 더트) 루트 v2 </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(dirt_patch_presets[0])"><i class="bi bi-upload"></i></div></td><td>O</td><td>O</td><td> </td><td>O</td><td>O</td><td>O</td><td>30</td><td>350</td></tr>
+  <tr><td>더트 ONLY (마중) 루트    </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(dirt_patch_presets[1])"><i class="bi bi-upload"></i></div></td><td> </td><td>O</td><td> </td><td>O</td><td>O</td><td> </td><td>25</td><td>190</td></tr>
+  <tr><td>더트 ONLY (단마중) 루트  </td><td><div class="div_btn round btn btn-primary btn-sm" onclick="load_preset(dirt_patch_presets[2])"><i class="bi bi-upload"></i></div></td><td> </td><td>O</td><td>O</td><td>O</td><td>O</td><td> </td><td>25</td><td>220</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<div>
 <a href="https://gall.dcinside.com/umamusu/2036494" target="_blank">뉴트랙 출주표 정리</a><br>
 <table class="const_preset_table table table-bordered">
 <thead>
@@ -976,6 +990,11 @@ umamusumelabo_presets = [
   'eyJKXzdfQSI6LTEsIkpfN19CIjotMSwiSl84X0EiOi0xLCJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl85X0IiOi0xLCJKXzEwX0EiOjk0LCJKXzEwX0IiOjk1LCJKXzExX0EiOi0xLCJKXzExX0IiOjk3LCJKXzEyX0EiOjAsIkpfMTJfQiI6MiwiQ18xX0EiOi0xLCJDXzFfQiI6LTEsIkNfMl9BIjoxMDIsIkNfMl9CIjotMSwiQ18zX0EiOjQ1LCJDXzNfQiI6NDgsIkNfNF9BIjozLCJDXzRfQiI6LTEsIkNfNV9BIjo1LCJDXzVfQiI6NiwiQ182X0EiOi0xLCJDXzZfQiI6OSwiQ183X0EiOi0xLCJDXzdfQiI6LTEsIkNfOF9BIjotMSwiQ184X0IiOi0xLCJDXzlfQSI6NTUsIkNfOV9CIjoxMSwiQ18xMF9BIjotMSwiQ18xMF9CIjoxMywiQ18xMV9BIjoxNSwiQ18xMV9CIjoxOSwiQ18xMl9BIjotMSwiQ18xMl9CIjoyMywiU18xX0EiOi0xLCJTXzFfQiI6LTEsIlNfMl9BIjotMSwiU18yX0IiOjI0LCJTXzNfQSI6MTUyLCJTXzNfQiI6MjUsIlNfNF9BIjotMSwiU180X0IiOi0xLCJTXzVfQSI6MjgsIlNfNV9CIjotMSwiU182X0EiOjI5LCJTXzZfQiI6MzEsIlNfN19BIjotMSwiU183X0IiOi0xLCJTXzhfQSI6LTEsIlNfOF9CIjotMSwiU185X0EiOjE3NSwiU185X0IiOjMyLCJTXzEwX0EiOi0xLCJTXzEwX0IiOjMzLCJTXzExX0EiOjM0LCJTXzExX0IiOi0xLCJTXzEyX0EiOjQwLCJTXzEyX0IiOjQyfQ==',
 ]
 
+dirt_patch_presets = [
+  'eyJKXzhfQiI6OTEsIkpfOV9BIjo5MiwiSl8xMF9BIjo5NCwiSl8xMF9CIjo5NSwiSl8xMV9CIjo5NywiSl8xMl9BIjoxLCJKXzEyX0IiOjM3NSwiQ18yX0EiOjEwMiwiQ18zX0EiOi0xLCJDXzNfQiI6NDgsIkNfNF9BIjo0LCJDXzVfQSI6NSwiQ181X0IiOjcsIkNfNl9CIjo5LCJDXzlfQSI6LTEsIkNfMTBfQSI6Mzg3LCJDXzEwX0IiOjE0LCJDXzExX0IiOjE5LCJDXzEyX0EiOjIxLCJDXzEyX0IiOjIyLCJTXzJfQiI6MjQsIlNfM19BIjotMSwiU18zX0IiOjI2LCJTXzRfQiI6MjcsIlNfNV9BIjo0MDAsIlNfNl9BIjoyOSwiU182X0IiOi0xLCJTXzlfQSI6LTEsIlNfMTBfQSI6Mzg4LCJTXzEwX0IiOjMzLCJTXzExX0IiOjM5LCJTXzEyX0EiOjQwLCJTXzEyX0IiOjQxLCJDXzdfQSI6LTEsIlNfMl9BIjozOTYsIkNfMV9BIjotMSwiQ182X0EiOi0xLCJTXzFfQiI6NjksIlNfOV9CIjotMSwiU18xMV9BIjotMSwiU181X0IiOi0xLCJDXzExX0EiOi0xLCJKXzExX0EiOi0xLCJDXzRfQiI6LTF9',
+  'eyJKXzEyX0IiOjM3NSwiQ180X0EiOjM3NiwiQ182X0EiOjM3OCwiQ182X0IiOjExNCwiQ185X0IiOjM4NSwiQ18xMF9BIjozODcsIkNfMTFfQSI6MTYsIkNfMTJfQSI6MjEsIkNfMTJfQiI6MjMsIlNfMV9CIjotMSwiU18yX0EiOjM5NiwiU18yX0IiOjI0LCJTXzNfQiI6MTUzLCJTXzRfQSI6MTU1LCJTXzRfQiI6LTEsIlNfNV9BIjo0MDAsIlNfNV9CIjoxNTgsIlNfNl9CIjozMSwiU18xMl9CIjo0MiwiU18xMl9BIjo0MCwiU18xMV9BIjozNywiU18xMF9BIjozODgsIlNfOV9CIjozODYsIlNfMV9BIjotMSwiSl8xMF9BIjoyMDEsIkpfMTBfQiI6LTEsIkpfMTJfQSI6LTEsIkpfMTFfQiI6MjEwLCJDXzJfQiI6MjMyLCJDXzRfQiI6LTEsIkNfNV9BIjotMSwiQ18zX0EiOi0xLCJTXzNfQSI6LTEsIlNfNl9BIjotMSwiU185X0EiOi0xLCJDXzExX0IiOi0xLCJDXzEwX0IiOi0xLCJDXzdfQSI6MTAsIkNfOF9BIjotMSwiU18xMV9CIjotMX0=',
+  'eyJKXzEyX0IiOjM3NSwiQ180X0EiOjM3NiwiQ182X0EiOjM3OCwiQ182X0IiOjExNCwiQ185X0IiOjM4NSwiQ18xMF9BIjozODcsIkNfMTFfQSI6MTcsIkNfMTJfQSI6MjEsIkNfMTJfQiI6MjMsIlNfMV9CIjotMSwiU18yX0EiOjM5NiwiU18yX0IiOjI0LCJTXzNfQiI6MTUzLCJTXzRfQSI6MTU1LCJTXzRfQiI6LTEsIlNfNV9BIjo0MDAsIlNfNV9CIjoxNTgsIlNfNl9CIjozMSwiU18xMl9CIjo0MiwiU18xMl9BIjo0MCwiU18xMV9BIjozNiwiU18xMF9BIjozODgsIlNfOV9CIjozODYsIlNfMV9BIjotMSwiSl8xMF9BIjoyMDEsIkpfMTBfQiI6LTEsIkpfMTJfQSI6LTEsIkpfMTFfQiI6MjEwLCJDXzJfQiI6MjMyLCJDXzRfQiI6LTEsIkNfNV9BIjotMSwiQ18zX0EiOi0xLCJTXzNfQSI6LTEsIlNfNl9BIjotMSwiU185X0EiOi0xLCJDXzExX0IiOi0xLCJDXzEwX0IiOi0xLCJDXzdfQSI6MTAsIkNfOF9BIjotMSwiU18xMV9CIjotMX0=',
+]
 
 </script>
 </body>
